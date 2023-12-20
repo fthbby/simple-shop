@@ -1,23 +1,30 @@
 import React from "react";
 import { Button, Box, Grid } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function index() {
   return (
     <>
-      <Box paddingY={8} paddingX={5}>
-        <Grid container>
-          <Grid item sm={2} md={2}>
+      <Box>
+        <Grid container fontSize={12}>
+          <Grid item xs={2} sm={2} md={2}>
             LOGO
           </Grid>
           <Grid
             item
+            xs={10}
             sm={10}
             md={10}
             display={"flex"}
             justifyContent={"space-between"}
           >
             <Box color="#F28F59" textTransform={"uppercase"} fontWeight={700}>
-              Subscriptions
+              <Link
+                to="/subscriptions"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                Subscriptions
+              </Link>
             </Box>
             <Box color="#F28F59" textTransform={"uppercase"} fontWeight={700}>
               Store
