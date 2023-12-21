@@ -9,7 +9,6 @@ const navItems = [
   { name: "Subscriptions", link: "/subscriptions" },
   { name: "Store", link: "/store" },
   { name: "Work With Me", link: "/work" },
-  // { name: "Cart", link: "/cart" },
 ];
 
 function NavBar({fadeIn}) {

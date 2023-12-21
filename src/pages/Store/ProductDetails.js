@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
 import AddToCart from "../../components/buttons/AddToCart";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 function ProductDetails({ fadeIn }) {
   const { id } = useParams();
@@ -28,7 +29,7 @@ function ProductDetails({ fadeIn }) {
 
   return (
     <Box
-      pt={"15%"}
+      pt={"10%"}
       sx={{ transition: "opacity .5s ease-in-out", opacity: fadeIn ? 1 : 0 }}
     >
       <Box
@@ -39,17 +40,23 @@ function ProductDetails({ fadeIn }) {
       >
         <Box display="flex" flexDirection={"row"} alignItems={"center"}>
           <Box
-            onClick={() => navigate("/store")}
-            sx={{ cursor: "pointer", whiteSpace: "nowrap" }}
+            sx={{
+              whiteSpace: "nowrap",
+              display: "flex",
+              alignItems: "center",
+            }}
           >
             <Typography
               pr={1}
               fontSize={12}
               letterSpacing={1}
               textTransform={"uppercase"}
+              onClick={() => navigate("/store")}
+              sx={{ cursor: "pointer" }}
             >
-              Store >
+              Store
             </Typography>
+            <KeyboardArrowRightIcon sx={{ fontSize: 14 }} />
           </Box>
 
           <Typography
@@ -62,32 +69,66 @@ function ProductDetails({ fadeIn }) {
           </Typography>
         </Box>
 
-        <Typography
-          pl={1}
-          fontSize={12}
-          letterSpacing={1}
-          textTransform={"uppercase"}
-          onClick={onNext}
-          sx={{ cursor: "pointer", whiteSpace: "nowrap" }}
+        <Box
+          sx={{
+            whiteSpace: "nowrap",
+            display: "flex",
+            alignItems: "center",
+          }}
         >
-          Next >
-        </Typography>
+          <Typography
+            pl={1}
+            fontSize={12}
+            letterSpacing={1}
+            textTransform={"uppercase"}
+            onClick={onNext}
+            sx={{ cursor: "pointer", whiteSpace: "nowrap" }}
+          >
+            Next
+          </Typography>
+          <KeyboardArrowRightIcon sx={{ fontSize: 14 }} />
+        </Box>
       </Box>
 
       <Grid container>
-        <Grid item md={6} order={{ xs: 2, md: 1 }} pr={{ xs: 0, md: 5 }}>
+        <Grid
+          item
+          md={6}
+          order={{ xs: 2, md: 1 }}
+          pr={{ xs: 0, md: 5 }}
+          sx={{
+            display: "flex",
+            // alignItems: "center",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
           <Typography variant="h5" pb={3}>
             {data.title}
           </Typography>
-          <Typography pb={3}>${data.price}</Typography>
-          <Typography pb={3} fontSize={12}>
+          <Typography pb={3} fontFamily={"Sometype Mono"}>
+            ${data.price}
+          </Typography>
+          <Typography pb={3} fontSize={12} fontFamily={"Sometype Mono"}>
             {data.description}
           </Typography>
 
-          <AddToCart productId={id} product={data}/>
+          <AddToCart productId={id} product={data} />
         </Grid>
 
-        <Grid item md={6} order={{ xs: 1, md: 2 }}>
+        <Grid item md={2} order={{ md: 1 }} />
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          md={4}
+          order={{ xs: 1, md: 2 }}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <img src={data.image} width={"100%"} />
         </Grid>
       </Grid>

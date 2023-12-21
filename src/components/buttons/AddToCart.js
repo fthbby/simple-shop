@@ -37,7 +37,7 @@ function AddToCart({ productId, product }) {
     <Box
       onClick={onNext}
       border={"2px solid red"}
-      padding={3}
+      padding={2.5}
       textTransform={"uppercase"}
       color="red"
       width={125}
@@ -45,7 +45,8 @@ function AddToCart({ productId, product }) {
       alignItems={"center"}
       justifyContent={"center"}
       fontSize={14}
-      fontWeight={600}
+      fontFamily={"Sometype Mono"}
+
       sx={{
         cursor: "pointer",
         transition: "color 0.3s ease-in-out, background 0.3s ease-in-out",

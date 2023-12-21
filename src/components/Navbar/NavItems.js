@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { IconButton, Badge, Button, Box, Grid } from "@mui/material/";
+import {  Badge, Button, Box, Grid } from "@mui/material/";
 import { NavLink, useNavigate } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import DragHandleSharpIcon from "@mui/icons-material/DragHandleSharp";
+
 import { useRecoilState } from "recoil";
 import { cartAtom } from "../../stateManagement/atom/cartAtom";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -32,7 +32,6 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
       <Grid item xs={4}>
         {!mobileOpen ? (
           <Box
-            // backgroundColor='red'
             display={"flex"}
             alignItems={"center"}
             justifyContent={"center"}

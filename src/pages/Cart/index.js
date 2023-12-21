@@ -12,11 +12,8 @@ function Cart({ fadeIn }) {
   const [cart, setCart] = useRecoilState(cartAtom);
 
   const onRemoveFromCart = (itemId) => {
-    // Remove the item from the cart
     const updatedCart = cart.filter((item) => item.id !== itemId);
     setCart(updatedCart);
-
-    // Update local storage
     localStorage.setItem("recoil-persist", JSON.stringify(updatedCart));
   };
 

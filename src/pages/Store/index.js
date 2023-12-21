@@ -34,7 +34,7 @@ function Store({ fadeIn }) {
         >
           EVERYTHING YOU NEED TO KNOW ABOUT AVO COUNTY.
         </Typography>
-        <Typography textAlign={"center"} fontSize={12}>
+        <Typography textAlign={"center"} fontSize={12} fontFamily={'Sometype Mono'}>
           Mollit pariatur aliquip mollit labore ut sunt. Adipisicing id qui
           veniam nostrud cillum do eu occaecat ullamco quis deserunt sit amet.
           <br />

@@ -6,14 +6,14 @@ function RedButton({text, onClick}) {
     <Box
       onClick={onClick}
       border={"2px solid red"}
-      padding={3}
+      padding={2}
       textTransform={"uppercase"}
       color="red"
       display={"flex"}
       alignItems={"center"}
       justifyContent={"center"}
       fontSize={14}
-      fontWeight={600}
+      fontFamily={"Sometype Mono"}
       sx={{
         cursor: "pointer",
         transition: "color 0.3s ease-in-out, background 0.3s ease-in-out",
