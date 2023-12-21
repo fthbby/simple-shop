@@ -24,7 +24,7 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
 
   useEffect(()=>{
     total()
-  },[])
+  },[cart])
 
   return (
     <Box
