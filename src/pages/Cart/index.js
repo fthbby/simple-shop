@@ -11,10 +11,16 @@ function Cart({ fadeIn }) {
   const navigate = useNavigate();
   const [cart, setCart] = useRecoilState(cartAtom);
 
+  const onRemoveFromCart = (itemId) => {
+    // Remove the item from the cart
+    const updatedCart = cart.filter((item) => item.id !== itemId);
+    setCart(updatedCart);
 
+    // Update local storage
+    localStorage.setItem("recoil-persist", JSON.stringify(updatedCart));
+  };
 
-
-  console.log('ltest :', localStorage.getItem("recoil-persist"))
+  console.log("local :", localStorage.getItem("recoil-persist"));
   return (
     <Box
       pt={"10%"}
@@ -29,7 +35,10 @@ function Cart({ fadeIn }) {
           {cart?.map((data) => (
             <>
               <Grid container display="flex" paddingY={3}>
-                <CartCard data={data} />
+                <CartCard
+                  data={data}
+                  onRemoveFromCart={() => onRemoveFromCart(data.id)}
+                />
               </Grid>
               <Divider />
             </>

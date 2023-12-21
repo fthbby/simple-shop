@@ -2,8 +2,7 @@ import React from "react";
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
-
-function CartCard({data}) {
+function CartCard({ data, onRemoveFromCart }) {
   return (
     <>
       <Grid item xs={5} sm={2} md={2}>
@@ -13,10 +12,20 @@ function CartCard({data}) {
       <Grid item xs={4} sm={5} md={5}>
         {data.title}
       </Grid>
-      <Grid item xs={3} sm={4} md={4} display="flex" justifyContent={"flex-end"}>
+      <Grid
+        item
+        xs={3}
+        sm={4}
+        md={4}
+        display="flex"
+        justifyContent={"flex-end"}
+      >
         ${data.price}
-        <CloseIcon sx={{ color: "gray" }} />
-      </Grid> 
+        <CloseIcon
+          onClick={onRemoveFromCart}
+          sx={{ color: "gray", cursor: "pointer" }}
+        />
+      </Grid>
     </>
   );
 }
