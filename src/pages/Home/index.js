@@ -13,7 +13,8 @@ function Home({ fadeIn }) {
         height={"95vh"}
         color="#C97878"
         fontWeight={700}
-        fontSize={14}
+        fontSize={12}
+        letterSpacing={2}
         flexDirection={"column"}
         sx={{ transition: "opacity .3s ease-in-out", opacity: fadeIn ? 1 : 0 }}
       >
@@ -26,7 +27,7 @@ function Home({ fadeIn }) {
             marginBottom: 30,
           }}
         />
-        WELCOME TO THIS SITE
+        WELCOME TO THIS SITE.
       </Box>
 
       <Grid container height={"65vh"}>

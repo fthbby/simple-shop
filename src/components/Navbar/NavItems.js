@@ -53,7 +53,7 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
             disableRipple
             sx={{
               letterSpacing: 3,
-              fontFamily: "Sometype+Mono",
+            //   fontFamily: "Sometype Mono",
               fontWeight: 700,
               color: "#F28F59",
               fontSize: "12px",
