@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { IconButton, Toolbar, Button, Box, Grid } from "@mui/material/";
+import { IconButton, Badge, Button, Box, Grid } from "@mui/material/";
 import { NavLink, useNavigate } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import DragHandleSharpIcon from "@mui/icons-material/DragHandleSharp";
 import { useRecoilState } from "recoil";
 import { cartAtom } from "../../stateManagement/atom/cartAtom";
+import MenuIcon from "@mui/icons-material/Menu";
 
 function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
   const navigate = useNavigate();
@@ -31,18 +32,28 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
       <Grid item xs={4}>
         {!mobileOpen ? (
           <Box
+            // backgroundColor='red'
             display={"flex"}
-            flexDirection={"row"}
             alignItems={"center"}
+            justifyContent={"center"}
             sx={{ mr: 0, display: { xs: "block", sm: "none" } }}
           >
-            <ShoppingCartOutlinedIcon
-            onClick={()=>navigate('/cart')}
-              sx={{ fontSize: 30, cursor: "pointer", mr: 2 }}
-            />
+            <Box>
+              <Badge
+                badgeContent={cart.length}
+                color="error"
+                display={cart.length > 0 ? "flex" : "none"}
+                sx={{ position: "absolute" }}
+              >
+                <ShoppingCartOutlinedIcon
+                  onClick={() => navigate("/cart")}
+                  sx={{ fontSize: 30, cursor: "pointer" }}
+                />
+              </Badge>
+            </Box>
 
-            <DragHandleSharpIcon
-              sx={{ fontSize: 35, cursor: "pointer" }}
+            <MenuIcon
+              sx={{ fontSize: 35, cursor: "pointer", paddingLeft: 6 }}
               onClick={handleDrawerToggle}
             />
           </Box>
@@ -91,7 +102,7 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
             },
           }}
         >
-          CART {cart.length > 0 ? `(${cart.length})` : ''}
+          CART {cart.length > 0 ? `(${cart.length})` : ""}
         </Button>
       </Box>
     </Box>
