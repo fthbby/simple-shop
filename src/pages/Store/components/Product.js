@@ -11,20 +11,21 @@ function Product({ data }) {
       flexDirection={"column"}
       width={250}
       onClick={() => navigate(`/product/${data.id}`)}
+      sx={{
+        cursor: "pointer",
+
+        transition: "color 0.3s ease-in-out",
+        "&:hover": {
+          color: "#C97878", // Adjust the brightness value as needed
+        },
+      }}
     >
       <Box
         component={"img"}
         src={data.image}
         width={250}
         height={250}
-        // border={"1px solid black"}
-        sx={{
-          cursor: "pointer",
-          transition: "filter 0.3s ease-in-out",
-          "&:hover": {
-            filter: "brightness(120%)", // Adjust the brightness value as needed
-          },
-        }}
+        sx={{}}
       />
 
       <Typography fontSize={12} textTransform={"uppercase"} fontWeight={600}>

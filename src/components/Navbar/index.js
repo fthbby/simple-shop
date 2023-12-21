@@ -6,7 +6,7 @@ import NavItems from "./NavItems";
 const drawerWidth = '100%';
 
 const navItems = [
-  { name: "Subscriptions", link: "/subscriptions" },
+  // { name: "Subscriptions", link: "/subscriptions" },
   { name: "Store", link: "/store" },
   { name: "Work With Me", link: "/work" },
 ];

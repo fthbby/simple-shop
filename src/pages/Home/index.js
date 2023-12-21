@@ -30,15 +30,16 @@ function Home({ fadeIn }) {
         WELCOME TO THIS SITE.
       </Box>
 
-      <Grid container height={"65vh"}>
-        <Grid item sm={6} md={6}>
-          <img src="https://picsum.photos/300" />
+      <Grid container mb={10}>
+        <Grid item  xs={12} sm={6} md={5.5}>
+          <img src="https://picsum.photos/300" width={"100%"} />
         </Grid>
-        <Grid item sm={6} md={6} pt={"10%"}>
+        <Grid item md={1}/>
+        <Grid item sm={6} md={5.5} pt={"10%"}>
           <Box color="#C97878" fontSize={30} textAlign={"center"}>
             I'm Cartman
           </Box>
-          <Box textAlign={"center"}>
+          <Box textAlign={"center"} fontFamily={"Sometype Mono"} fontSize={12}>
             Cillum duis aliquip cupidatat veniam incididunt Lorem. Incididunt
             nisi consectetur nostrud reprehenderit adipisicing anim minim. Duis
             sint et tempor velit qui dolor elit ad. Ex excepteur ut nisi laboris
@@ -61,12 +62,12 @@ function Home({ fadeIn }) {
           display="flex"
           alignItems={"center"}
           justifyContent={"center"}
-          paddingY={5}
+          // paddingY={2}
         >
-          <img
+          {/* <img
             src={Explore}
             style={{ maxWidth: 700, width: 500, height: "auto" }}
-          />
+          /> */}
         </Grid>
       </Grid>
 
@@ -92,6 +93,8 @@ function Home({ fadeIn }) {
           display="flex"
           alignItems={"center"}
           justifyContent={"center"}
+          fontFamily={"Sometype Mono"}
+          fontSize={12}
         >
           Reprehenderit officia eu quis ad sunt in nisi et. Cupidatat ex ut
           nostrud tempor cupidatat ad dolore reprehenderit aliqua quis nulla
@@ -114,8 +117,15 @@ function Home({ fadeIn }) {
 
       <Divider />
 
-      <Grid container paddingY={10} width={"100%"}>
-        <Grid item sm={6} md={6}>
+      <Grid container paddingY={10}>
+        <Grid
+          item
+          xs={6}
+          sm={6}
+          md={6}
+          fontFamily={"Sometype Mono"}
+          fontSize={12}
+        >
           Amet occaecat aliqua voluptate deserunt. Ipsum enim proident deserunt
           esse mollit minim officia esse deserunt magna nisi. Occaecat sunt esse
           minim pariatur est est Lorem ad quis irure. Et velit exercitation
@@ -123,24 +133,64 @@ function Home({ fadeIn }) {
           irure. Quis nostrud cupidatat adipisicing elit consectetur pariatur
           ullamco ea laboris duis minim.{" "}
         </Grid>
-        <Grid item sm={6} md={6}>
+        <Grid
+          item
+          xs={6}
+          sm={6}
+          md={6}
+          display={"flex"}
+          justifyContent={"flex-end"}
+        >
           <img src="https://picsum.photos/300" />
         </Grid>
       </Grid>
 
       <Divider />
 
-      <Grid container paddingY={10}>
-        <Grid item sm={6} md={3}>
+      <Grid
+        container
+        paddingY={10}
+        display={"flex"}
+        justifyContent={"space-between"}
+      >
+        <Grid
+          item
+          sm={6}
+          md={3}
+          display={"flex"}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
           <img src="https://picsum.photos/200/300" />
         </Grid>
-        <Grid item sm={6} md={3}>
+        <Grid
+          item
+          sm={6}
+          md={3}
+          display={"flex"}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
           <img src="https://picsum.photos/200/300" />
         </Grid>
-        <Grid item sm={6} md={3}>
+        <Grid
+          item
+          sm={6}
+          md={3}
+          display={"flex"}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
           <img src="https://picsum.photos/200/300" />
         </Grid>
-        <Grid item sm={6} md={3}>
+        <Grid
+          item
+          sm={6}
+          md={3}
+          display={"flex"}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
           <img src="https://picsum.photos/200/300" />
         </Grid>
       </Grid>

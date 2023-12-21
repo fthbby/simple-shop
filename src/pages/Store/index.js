@@ -4,11 +4,14 @@ import Product from "./components/Product";
 
 function Store({ fadeIn }) {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getAllProducts = async () => {
+    setIsLoading(true);
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => setProducts(json));
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -19,7 +22,7 @@ function Store({ fadeIn }) {
       display="flex"
       alignItems={"center"}
       justifyContent={"center"}
-      pt={"20%"}
+      pt={"10%"}
       flexDirection={"column"}
       sx={{ transition: "opacity .3s ease-in-out", opacity: fadeIn ? 1 : 0 }}
     >
@@ -34,7 +37,11 @@ function Store({ fadeIn }) {
         >
           EVERYTHING YOU NEED TO KNOW ABOUT AVO COUNTY.
         </Typography>
-        <Typography textAlign={"center"} fontSize={12} fontFamily={'Sometype Mono'}>
+        <Typography
+          textAlign={"center"}
+          fontSize={12}
+          fontFamily={"Sometype Mono"}
+        >
           Mollit pariatur aliquip mollit labore ut sunt. Adipisicing id qui
           veniam nostrud cillum do eu occaecat ullamco quis deserunt sit amet.
           <br />
@@ -46,13 +53,34 @@ function Store({ fadeIn }) {
         </Typography>
       </Box>
 
-      <Grid container marginTop={20} >
-        {products.map((data) => (
-          <Grid item xs={6} md={4} lg={4} display='flex' alignItems={'center'} justifyContent={'center'}>
-            <Product data={data} />
-          </Grid>
-        ))}
-      </Grid>
+      {isLoading ? (
+        "LOADING"
+      ) : (
+        <Grid
+          container
+          marginTop={20}
+          display="flex"
+          justifyContent={"space-between"}
+          sx={{
+            transition: "opacity 1.5s ease-in-out",
+            opacity: fadeIn ? 1 : 0,
+          }}
+        >
+          {products.map((data) => (
+            <Grid
+              item
+              xs={6}
+              md={3.75}
+              lg={3.75}
+              display="flex"
+              pb={10}
+              justifyContent={"center"}
+            >
+              <Product data={data} />
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </Box>
   );
 }

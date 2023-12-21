@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 
-function RedButton({text, onClick}) {
+function RedButton({text, onClick, ...props}) {
   return (
     <Box
       onClick={onClick}
@@ -22,6 +22,7 @@ function RedButton({text, onClick}) {
           background: "red",
         },
       }}
+      {...props}
     >
      {text}
     </Box>
