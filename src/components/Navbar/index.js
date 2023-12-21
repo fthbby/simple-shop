@@ -1,48 +1,79 @@
-import React from "react";
-import { Button, Box, Grid } from "@mui/material";
+import React, { useState } from "react";
+import { Drawer, Box, Grid,   IconButton,} from "@mui/material";
 import { Link } from "react-router-dom";
+import DrawerItems from "./DrawerItems";
+import NavItems from "./NavItems";
+import MenuIcon from "@mui/icons-material/Menu";
 
-function index() {
+const drawerWidth = 310;
+
+const navItems = [
+  { name: "Subscriptions", link: "/subscriptions" },
+  { name: "Store", link: "/store" },
+  { name: "Work With Me", link: "/work" },
+  { name: "Cart", link: "/cart" },
+];
+
+function NavBar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
   return (
-    <>
-      <Box>
-        <Grid container fontSize={12}>
-          <Grid item xs={2} sm={2} md={2}>
-            LOGO
-          </Grid>
-          <Grid
-            item
-            xs={10}
-            sm={10}
-            md={10}
-            display={"flex"}
-            justifyContent={"space-between"}
-          >
-            <Box color="#F28F59" textTransform={"uppercase"} fontWeight={700}>
-              <Link
-                to="/subscriptions"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                Subscriptions
-              </Link>
-            </Box>
-            <Box color="#F28F59" textTransform={"uppercase"} fontWeight={700}>
-              Store
-            </Box>
-            <Box color="#F28F59" textTransform={"uppercase"} fontWeight={700}>
-              Work with me
-            </Box>
-            <Box color="#F28F59" textTransform={"uppercase"} fontWeight={700}>
-              Icon
-            </Box>
-            <Box color="#F28F59" textTransform={"uppercase"} fontWeight={700}>
-              Cart
-            </Box>
-          </Grid>
-        </Grid>
-      </Box>
-    </>
+    <Box>
+      {/* <Grid
+        item
+        sm={12}
+        md={12}
+        backgroundColor="red"
+        display={"flex"}
+        flexDirection={"row"}
+        justifyContent={"space-between"}
+                sx={{ display: { xs: "none", sm: "flex" } }}
+
+      > */}
+        <NavItems
+          mobileOpen={mobileOpen}
+          navItems={navItems}
+          handleDrawerToggle={handleDrawerToggle}
+        />
+
+        {/* <Box>Logo</Box>
+
+        <Box display="flex">
+          {navItems.map((item) => (
+            <Box>{item.name}</Box>
+          ))}
+        </Box> */}
+        
+      {/* </Grid> */}
+
+    
+
+      <Drawer
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: "block", md: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
+          }}
+        >
+          <DrawerItems
+            navItems={navItems}
+            handleDrawerToggle={handleDrawerToggle}
+          />
+
+        </Drawer>
+    </Box>
   );
 }
 
-export default index;
+export default NavBar;
