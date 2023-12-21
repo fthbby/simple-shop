@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { cartAtom } from "../../stateManagement/atom/cartAtom";
 import { Box, Divider, Grid, Typography } from "@mui/material";
@@ -7,8 +7,13 @@ import RedButton from "../../components/buttons/RedButton";
 import TotalCheckout from "./components/TotalCheckout";
 import { useNavigate } from "react-router-dom";
 
-function Cart({ fadeIn }) {
+function Cart() {
   const navigate = useNavigate();
+  const [fadeIn, setFadeIn] = useState(false)
+  useEffect(() => {
+    setFadeIn(true);
+  }, []);
+
   const [cart, setCart] = useRecoilState(cartAtom);
 
   const onRemoveFromCart = (itemId) => {

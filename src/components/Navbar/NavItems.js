@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Badge, Button, Box, Grid } from "@mui/material/";
 import { NavLink, useNavigate } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-
 import { useRecoilState } from "recoil";
 import { cartAtom } from "../../stateManagement/atom/cartAtom";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -31,8 +30,8 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
       sx={{
         display: "flex",
         justifyContent: { xs: "space-between", md: "space-between" },
-        transition: "opacity 1.8s ease-in-out",
-        opacity: fadeIn ? 1 : 0,
+        // transition: "opacity 1.8s ease-in-out",
+        // opacity: fadeIn ? 1 : 0,
       }}
     >
       <Box

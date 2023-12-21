@@ -4,11 +4,16 @@ import { useParams, useNavigate } from "react-router-dom";
 import AddToCart from "../../components/buttons/AddToCart";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
-function ProductDetails({ fadeIn }) {
+function ProductDetails({ }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [fadeIn, setFadeIn] = useState(false)
+  useEffect(() => {
+    setFadeIn(true);
+  }, []);
+
 
   const grabProduct = async () => {
     try {

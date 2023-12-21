@@ -1,8 +1,14 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import ContactForm from "../../components/ContactForm";
 
-function Work() {
+function Work({}) {
+  
+  const [fadeIn, setFadeIn] = useState(false)
+  useEffect(() => {
+    setFadeIn(true);
+  }, []);
+
   return (
     <Box
       mt={"10%"}
@@ -10,6 +16,8 @@ function Work() {
       alignItems={"center"}
       justifyContent={"center"}
       flexDirection={"column"}
+      sx={{ transition: "opacity .5s ease-in-out", opacity: fadeIn ? 1 : 0 }}
+
     >
       <Typography fontSize={12} color="#C97878" fontWeight={600} pb={5}>
         LET'S WORK TOGETHER

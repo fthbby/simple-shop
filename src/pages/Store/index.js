@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import Product from "./components/Product";
 
-function Store({ fadeIn }) {
+function Store({}) {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [fadeIn, setFadeIn] = useState(false);
+  useEffect(() => {
+    setFadeIn(true);
+  }, []);
 
   const getAllProducts = async () => {
     setIsLoading(true);

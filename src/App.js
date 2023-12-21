@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import Home from "./pages/Home/index";
 import Navbar from "./components/Navbar";
 import { Button, Box, Grid } from "@mui/material";
@@ -9,27 +15,16 @@ import Store from "./pages/Store/index";
 import ProductDetails from "./pages/Store/ProductDetails";
 
 function App() {
-  const [fadeIn, setFadeIn] = useState(false);
-
-  useEffect(() => {
-    setFadeIn(true);
-  }, []);
-
-
-
   return (
     <Box backgroundColor="#FFFEF9" paddingY={"5%"} paddingX={"5%"}>
       <BrowserRouter>
-        <Navbar fadeIn={fadeIn} />
+        <Navbar />
         <Routes>
-          <Route path="/" element={<Home fadeIn={fadeIn} />} />
-          <Route path="/cart" element={<Cart fadeIn={fadeIn} />} />
-          <Route path="/work" element={<Work fadeIn={fadeIn}/>} />
-          <Route path="/store" element={<Store fadeIn={fadeIn} />} />
-          <Route
-            path="/product/:id"
-            element={<ProductDetails fadeIn={fadeIn} />}
-          />
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>
       </BrowserRouter>
     </Box>

@@ -1,9 +1,13 @@
 import { Box, Divider, Grid, Typography } from "@mui/material";
-import React from "react";
-import Explore from "../../images/explore.png";
+import React, { useState, useEffect } from "react";
 import Avocado from "../../images/avocado.png";
 
-function Home({ fadeIn }) {
+function Home({}) {
+  const [fadeIn, setFadeIn] = useState(false);
+  useEffect(() => {
+    setFadeIn(true);
+  }, []);
+
   return (
     <Box>
       <Box
