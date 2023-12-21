@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
 import { useRecoilState } from "recoil";
+import { Box, Grid, Typography } from "@mui/material";
 import { cartAtom } from "../../stateManagement/atom/cartAtom";
 
 function AddToCart({ productId, product }) {
   const [cart, setCart] = useRecoilState(cartAtom);
-
+  const [text, setText] = useState("Add To Cart");
   const addTodoItem = () => {
     if (productId) {
       setCart((oldCart) => [
@@ -14,17 +14,28 @@ function AddToCart({ productId, product }) {
           id: productId,
           title: product.title,
           price: product.price,
-          image: product.image
+          image: product.image,
         },
       ]);
-      //   setInputValue("");
     }
   };
 
-  console.log("cart :", cart);
+  const onNext = async () => {
+    setText("Adding...");
+    // Wait for 2 seconds before setting the next text
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    addTodoItem()
+    setText("Added!");
+
+    // Wait for another 2 seconds before setting the final text
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    setText("Add To Cart");
+  };
+
   return (
     <Box
-      onClick={addTodoItem}
+      onClick={onNext}
       border={"2px solid red"}
       padding={3}
       textTransform={"uppercase"}
@@ -44,7 +55,7 @@ function AddToCart({ productId, product }) {
         },
       }}
     >
-      Add To Cart
+      {text}
     </Box>
   );
 }
