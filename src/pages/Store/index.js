@@ -20,7 +20,6 @@ function Store({ fadeIn }) {
       alignItems={"center"}
       justifyContent={"center"}
       pt={"20%"}
-      //   height={"50vh"}
       flexDirection={"column"}
       sx={{ transition: "opacity .3s ease-in-out", opacity: fadeIn ? 1 : 0 }}
     >

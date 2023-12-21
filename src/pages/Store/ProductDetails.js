@@ -38,17 +38,20 @@ function ProductDetails({ fadeIn }) {
         pb={5}
       >
         <Box display="flex" flexDirection={"row"} alignItems={"center"}>
-          <Typography
-            pr={1}
-            fontSize={12}
-            letterSpacing={1}
-            textTransform={"uppercase"}
-            sx={{ cursor: "pointer" }}
+          <Box
             onClick={() => navigate("/store")}
+            sx={{ cursor: "pointer", whiteSpace: "nowrap" }}
           >
-            Store
-          </Typography>
-          >
+            <Typography
+              pr={1}
+              fontSize={12}
+              letterSpacing={1}
+              textTransform={"uppercase"}
+            >
+              Store >
+            </Typography>
+          </Box>
+
           <Typography
             pl={1}
             fontSize={12}
@@ -65,7 +68,7 @@ function ProductDetails({ fadeIn }) {
           letterSpacing={1}
           textTransform={"uppercase"}
           onClick={onNext}
-          sx={{ cursor: "pointer" }}
+          sx={{ cursor: "pointer", whiteSpace: "nowrap" }}
         >
           Next >
         </Typography>
@@ -81,7 +84,7 @@ function ProductDetails({ fadeIn }) {
             {data.description}
           </Typography>
 
-          <AddToCart />
+          <AddToCart productId={id} product={data}/>
         </Grid>
 
         <Grid item md={6} order={{ xs: 1, md: 2 }}>
