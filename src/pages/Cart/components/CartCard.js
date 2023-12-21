@@ -9,7 +9,7 @@ function CartCard({ data, onRemoveFromCart }) {
         <img src={data.image} height={150} width={150} />
       </Grid>
       <Grid item xs={0} sm={1} md={1} />
-      <Grid item xs={4} sm={5} md={5} fontFamily={"Sometype Mono"}>
+      <Grid item xs={4.5} sm={5.5} md={5.5} fontFamily={"Sometype Mono"}>
         {data.title}
       </Grid>
       <Grid
@@ -20,9 +20,9 @@ function CartCard({ data, onRemoveFromCart }) {
         display="flex"
         justifyContent={"flex-end"}
       >
-        <Typography fontFamily={"Sometype Mono"}>${data.price}</Typography>
+        <Typography fontFamily={"Sometype Mono"}>${data.price.toFixed(2)}</Typography>
       </Grid>
-      <Grid item xs={1} display="flex" justifyContent={"flex-end"}>
+      <Grid item xs={.5} display="flex" justifyContent={"flex-end"}>
         <CloseIcon
           onClick={onRemoveFromCart}
           sx={{

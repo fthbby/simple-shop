@@ -3,7 +3,7 @@ import { Drawer, Box, Grid, IconButton } from "@mui/material";
 import DrawerItems from "./DrawerItems";
 import NavItems from "./NavItems";
 
-const drawerWidth = '100%';
+const drawerWidth = "100%";
 
 const navItems = [
   // { name: "Subscriptions", link: "/subscriptions" },
@@ -11,12 +11,13 @@ const navItems = [
   { name: "Work With Me", link: "/work" },
 ];
 
-function NavBar({fadeIn}) {
+function NavBar({ fadeIn }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const handleDrawerToggle = () => {
+  const handleDrawerToggle = (link) => {
     setMobileOpen(!mobileOpen);
   };
+
   return (
     <>
       <NavItems

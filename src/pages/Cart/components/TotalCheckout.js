@@ -10,8 +10,8 @@ function TotalCheckout() {
   const getCartTotal = () => {
     let total = 0;
     cart.forEach((x) => (total += x.price));
-    setTotal(total);
-  };
+    setTotal(total.toFixed(2)); // Ensure total has 2 decimal places
+};
 
   useEffect(() => {
     getCartTotal();
