@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Drawer, Box, Grid, IconButton } from "@mui/material";
-import { Link } from "react-router-dom";
 import DrawerItems from "./DrawerItems";
 import NavItems from "./NavItems";
-import MenuIcon from "@mui/icons-material/Menu";
 
 const drawerWidth = '100%';
 
@@ -14,7 +12,7 @@ const navItems = [
   { name: "Cart", link: "/cart" },
 ];
 
-function NavBar() {
+function NavBar({fadeIn}) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -26,6 +24,7 @@ function NavBar() {
         mobileOpen={mobileOpen}
         navItems={navItems}
         handleDrawerToggle={handleDrawerToggle}
+        fadeIn={fadeIn}
       />
 
       <Drawer

@@ -1,32 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IconButton, Toolbar, Button, Box, Grid } from "@mui/material/";
-import { NavLink } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
+import { NavLink, useNavigate } from "react-router-dom";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import DragHandleSharpIcon from "@mui/icons-material/DragHandleSharp";
 
-function NavItems({ mobileOpen, navItems, handleDrawerToggle }) {
+function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
+  const navigate = useNavigate();
+
   return (
-    <Toolbar
+    <Box
       sx={{
         display: "flex",
         justifyContent: { xs: "space-between", md: "space-between" },
+        transition: "opacity 1.8s ease-in-out",
+        opacity: fadeIn ? 1 : 0,
       }}
     >
-    <Box>
+      <Box onClick={() => navigate("/")} sx={{ cursor: "pointer" }}>
         LOGO
-    </Box>
+      </Box>
       {mobileOpen ? null : (
         <Box sx={{ pt: 1, pb: 1 }}>{/* <MiniLogo /> */}</Box>
       )}
       <Grid item xs={4}>
         {!mobileOpen ? (
-          <IconButton
-            edge="start"
-            disableRipple
-            onClick={handleDrawerToggle}
+          <Box
+            display={"flex"}
+            flexDirection={"row"}
+            alignItems={"center"}
             sx={{ mr: 0, display: { xs: "block", sm: "none" } }}
           >
-            <MenuIcon disableRipple />
-          </IconButton>
+            <ShoppingCartOutlinedIcon
+              sx={{ fontSize: 30, cursor: "pointer", mr: 2 }}
+            />
+
+            <DragHandleSharpIcon
+              sx={{ fontSize: 35, cursor: "pointer" }}
+              onClick={handleDrawerToggle}
+            />
+          </Box>
         ) : null}
       </Grid>
 
@@ -37,17 +49,15 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle }) {
             to={item.link}
             disableRipple
             sx={{
-            fontWeight:700,
+              fontWeight: 700,
               color: "#F28F59",
-              fontSize: "16px",
+              fontSize: "12px",
               padding: "0 20px",
               "&.active": {
-                color: "black",
-                fontWeight: "bold",
+                color: "#F28F59",
               },
               "&:hover": {
                 color: "black",
-                fontWeight: "bold",
               },
             }}
           >
@@ -55,7 +65,7 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle }) {
           </Button>
         ))}
       </Box>
-    </Toolbar>
+    </Box>
   );
 }
 

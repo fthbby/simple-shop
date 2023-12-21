@@ -1,8 +1,9 @@
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import React from "react";
 import Explore from "../../images/explore.png";
+import Avocado from "../../images/avocado.png";
 
-function Home() {
+function Home({ fadeIn }) {
   return (
     <Box>
       <Box
@@ -13,8 +14,18 @@ function Home() {
         color="#C97878"
         fontWeight={700}
         fontSize={14}
-        // backgroundColor="red"
+        flexDirection={"column"}
+        sx={{ transition: "opacity .3s ease-in-out", opacity: fadeIn ? 1 : 0 }}
       >
+        <img
+          src={Avocado}
+          style={{
+            maxWidth: 500,
+            width: 200,
+            height: "auto",
+            marginBottom: 30,
+          }}
+        />
         WELCOME TO THIS SITE
       </Box>
 

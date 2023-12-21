@@ -21,40 +21,34 @@ function DrawerItems({ navItems, handleDrawerToggle }) {
     <Box backgroundColor="black" height={"100%"}>
       <Box sx={{ display: "flex", justifyContent: "flex-end", pr: 1, pt: 1 }}>
         <IconButton>
-          <CloseIcon style={{color:'white'}} onClick={handleDrawerToggle} />
+          <CloseIcon style={{ color: "white" }} onClick={handleDrawerToggle} />
         </IconButton>
       </Box>
-
-      <Box
-        sx={{ textAlign: "center", cursor: "pointer" }}
-        onClick={() => navigate("/")}
-      ></Box>
 
       <List>
         {navItems.map((item, index) => (
           <>
-            {/* <ListItem key={item} disablePadding> */}
-            <ListItemButton
-              sx={{
-                pt: 2,
-                pb: 2,
-              }}
-              href={item.link}
-              disableRipple
-            >
-              <Typography
-                pl={2}
-                fontFamily="Oswald"
-                variant="h5"
-                textTransform={"uppercase"}
-                color={currentPage === item.link ? "lightblue" : "white"}
-                fontWeight={currentPage === item.link && 600}
+            <ListItem key={item} disablePadding>
+              <ListItemButton
+                sx={{
+                  pt: 2,
+                  pb: 2,
+                }}
+                href={item.link}
+                disableRipple
               >
-                {item.name}
-              </Typography>
-            </ListItemButton>
-            {/* </ListItem> */}
-            {/* <Divider /> */}
+                <Typography
+                  pl={2}
+                  fontFamily="Oswald"
+                  variant="h5"
+                  textTransform={"uppercase"}
+                  color={currentPage === item.link ? "lightblue" : "white"}
+                  fontWeight={currentPage === item.link && 600}
+                >
+                  {item.name}
+                </Typography>
+              </ListItemButton>
+            </ListItem>
           </>
         ))}
       </List>
