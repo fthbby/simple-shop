@@ -18,47 +18,43 @@ function DrawerItems({ navItems, handleDrawerToggle }) {
   let currentPage = location.pathname;
 
   return (
-    <Box>
+    <Box backgroundColor="black" height={"100%"}>
       <Box sx={{ display: "flex", justifyContent: "flex-end", pr: 1, pt: 1 }}>
         <IconButton>
-          <CloseIcon onClick={handleDrawerToggle} />
+          <CloseIcon style={{color:'white'}} onClick={handleDrawerToggle} />
         </IconButton>
       </Box>
 
       <Box
         sx={{ textAlign: "center", cursor: "pointer" }}
         onClick={() => navigate("/")}
-      >
-        <Typography variant="h4" fontFamily="Oswald">
-          NATA
-        </Typography>
-      </Box>
+      ></Box>
 
       <List>
         {navItems.map((item, index) => (
           <>
-            <ListItem key={item} disablePadding>
-              <ListItemButton
-                sx={{
-                  pt: 2,
-                  pb: 2,
-                }}
-                href={item.link}
-                disableRipple
+            {/* <ListItem key={item} disablePadding> */}
+            <ListItemButton
+              sx={{
+                pt: 2,
+                pb: 2,
+              }}
+              href={item.link}
+              disableRipple
+            >
+              <Typography
+                pl={2}
+                fontFamily="Oswald"
+                variant="h5"
+                textTransform={"uppercase"}
+                color={currentPage === item.link ? "lightblue" : "white"}
+                fontWeight={currentPage === item.link && 600}
               >
-                <Typography
-                  pl={2}
-                  fontFamily="Oswald"
-                  variant="h5"
-                  textTransform={"uppercase"}
-                  color={currentPage === item.link ? "lightblue" : "black"}
-                  fontWeight={currentPage === item.link && 600}
-                >
-                  {item.name}
-                </Typography>
-              </ListItemButton>
-            </ListItem>
-            <Divider />
+                {item.name}
+              </Typography>
+            </ListItemButton>
+            {/* </ListItem> */}
+            {/* <Divider /> */}
           </>
         ))}
       </List>
