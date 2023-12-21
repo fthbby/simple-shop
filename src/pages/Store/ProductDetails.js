@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Box, Divider, Grid, Typography } from "@mui/material";
-
+import { Box, Grid, Typography } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
+import AddToCart from "../../components/buttons/AddToCart";
 
 function ProductDetails({ fadeIn }) {
   const { id } = useParams();
@@ -19,6 +19,9 @@ function ProductDetails({ fadeIn }) {
     }
   };
 
+  const onNext = () => {
+    navigate(`/product/${Number(id) + 1}`);
+  };
   useEffect(() => {
     grabProduct();
   }, [id]);
@@ -28,7 +31,12 @@ function ProductDetails({ fadeIn }) {
       pt={"15%"}
       sx={{ transition: "opacity .5s ease-in-out", opacity: fadeIn ? 1 : 0 }}
     >
-      <Box display="flex" width={"100%"} justifyContent={"space-between"}>
+      <Box
+        display="flex"
+        width={"100%"}
+        justifyContent={"space-between"}
+        pb={5}
+      >
         <Box display="flex" flexDirection={"row"} alignItems={"center"}>
           <Typography
             pr={1}
@@ -56,10 +64,28 @@ function ProductDetails({ fadeIn }) {
           fontSize={12}
           letterSpacing={1}
           textTransform={"uppercase"}
+          onClick={onNext}
+          sx={{ cursor: "pointer" }}
         >
-          Next
+          Next >
         </Typography>
       </Box>
+
+      <Grid container>
+        <Grid item md={6}>
+          <Typography variant="h5" pb={3}>
+            {data.title}
+          </Typography>
+          <Typography pb={3}>${data.price}</Typography>
+          <Typography>{data.description}</Typography>
+
+          <AddToCart/>
+        </Grid>
+
+        <Grid item md={6}>
+          <img src={data.image} width={"100%"} />
+        </Grid>
+      </Grid>
     </Box>
   );
 }
