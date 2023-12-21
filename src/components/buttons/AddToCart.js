@@ -6,25 +6,58 @@ import { cartAtom } from "../../stateManagement/atom/cartAtom";
 function AddToCart({ productId, product }) {
   const [cart, setCart] = useRecoilState(cartAtom);
   const [text, setText] = useState("Add To Cart");
-  const addTodoItem = () => {
-    if (productId) {
-      setCart((oldCart) => [
-        ...oldCart,
-        {
-          id: productId,
-          title: product.title,
-          price: product.price,
-          image: product.image,
-        },
-      ]);
-    }
+
+  // const addToCart = () => {
+  //   if (productId) {
+  //     setCart((oldCart) => [
+  //       ...oldCart,
+  //       {
+  //         id: productId,
+  //         title: product.title,
+  //         price: product.price,
+  //         image: product.image,
+  //       },
+  //     ]);
+  //   }
+  // };
+
+  const addToCart = () => {
+    setCart((oldCart) => {
+      // Check if the product with the same ID already exists in the cart
+      const existingItemIndex = oldCart.findIndex((item) => item.id === productId);
+  
+      if (existingItemIndex !== -1) {
+        // If the product exists, update the quantity
+        const updatedCart = [...oldCart];
+        updatedCart[existingItemIndex] = {
+          ...updatedCart[existingItemIndex],
+          quantity: updatedCart[existingItemIndex].quantity + 1,
+        };
+  
+        return updatedCart;
+      } else {
+        // If the product doesn't exist, add it to the cart with quantity 1
+        return [
+          ...oldCart,
+          {
+            id: productId,
+            title: product.title,
+            price: product.price,
+            image: product.image,
+            quantity: 1,
+          },
+        ];
+      }
+    });
   };
+
+  console.log('cart :', cart)
 
   const onNext = async () => {
     setText("Adding...");
     // Wait for 2 seconds before setting the next text
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    addTodoItem()
+    addToCart()
     setText("Added!");
 
     // Wait for another 2 seconds before setting the final text

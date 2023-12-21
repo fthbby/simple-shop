@@ -14,10 +14,10 @@ function DrawerItems({ navItems, handleDrawerToggle }) {
   let currentPage = location.pathname;
 
   return (
-    <Box backgroundColor="black" height={"100%"}>
+    <Box backgroundColor="black" height={"100%"} pt={'2%'} pr={'2%'}>
       <Box sx={{ display: "flex", justifyContent: "flex-end", pr: 1, pt: 1 }}>
         <IconButton>
-          <CloseIcon style={{ color: "white" }} onClick={handleDrawerToggle} />
+          <CloseIcon style={{ color: "white" , fontSize:30}} onClick={handleDrawerToggle} />
         </IconButton>
       </Box>
 

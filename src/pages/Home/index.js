@@ -31,12 +31,17 @@ function Home({ fadeIn }) {
       </Box>
 
       <Grid container mb={10}>
-        <Grid item  xs={12} sm={6} md={5.5}>
+        <Grid item xs={12} sm={5.5} md={5.5}>
           <img src="https://picsum.photos/300" width={"100%"} />
         </Grid>
-        <Grid item md={1}/>
-        <Grid item sm={6} md={5.5} pt={"10%"}>
-          <Box color="#C97878" fontSize={30} textAlign={"center"}>
+        <Grid item sm={1} md={1} />
+        <Grid item sm={5.5} md={5.5} pt={"5%"}>
+          <Box
+            color="#C97878"
+            fontSize={30}
+            textAlign={"center"}
+            fontFamily={"Bad Script"}
+          >
             I'm Cartman
           </Box>
           <Box textAlign={"center"} fontFamily={"Sometype Mono"} fontSize={12}>
@@ -76,14 +81,17 @@ function Home({ fadeIn }) {
           item
           sm={6}
           md={6}
-          color="#C97878"
-          // display="flex"
-          // alignItems={"center"}
-          // justifyContent={"center"}
+          display="flex"
+          flexDirection={"column"}
+          alignItems={"center"}
         >
-          WANNA SEE THE OC?
+          <Typography color="#C97878" fontSize={12} fontWeight={600}>
+            WANNA SEE THE OC?
+          </Typography>
           <br />
-          Become a subscriber
+          <Typography fontSize={12} fontFamily={"Sometype Mono"}>
+            Become a subscriber
+          </Typography>
         </Grid>
 
         <Grid
@@ -110,9 +118,18 @@ function Home({ fadeIn }) {
         paddingY={10}
         flexDirection={"column"}
       >
-        <Typography>looking for more?</Typography>
+        <Typography fontFamily={"Bad Script"} variant="h5" pb={1}>
+          - looking for more? -
+        </Typography>
 
-        <Typography>YOUR GUIDE TO THE WORLD</Typography>
+        <Typography
+          color="#C97878"
+          letterSpacing={1}
+          fontSize={14}
+          fontWeight={600}
+        >
+          [YOUR GUIDE TO THE WORLD]
+        </Typography>
       </Box>
 
       <Divider />
@@ -139,9 +156,11 @@ function Home({ fadeIn }) {
           sm={6}
           md={6}
           display={"flex"}
-          justifyContent={"flex-end"}
+          justifyContent={"center"}
         >
-          <img src="https://picsum.photos/300" />
+          <Box>
+            <img src="https://picsum.photos/300" width={"100%"} />
+          </Box>
         </Grid>
       </Grid>
 
@@ -160,6 +179,7 @@ function Home({ fadeIn }) {
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
+          pb={3}
         >
           <img src="https://picsum.photos/200/300" />
         </Grid>
@@ -170,6 +190,7 @@ function Home({ fadeIn }) {
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
+          pb={3}
         >
           <img src="https://picsum.photos/200/300" />
         </Grid>
@@ -180,6 +201,7 @@ function Home({ fadeIn }) {
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
+          pb={3}
         >
           <img src="https://picsum.photos/200/300" />
         </Grid>
@@ -190,6 +212,7 @@ function Home({ fadeIn }) {
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
+          pb={3}
         >
           <img src="https://picsum.photos/200/300" />
         </Grid>

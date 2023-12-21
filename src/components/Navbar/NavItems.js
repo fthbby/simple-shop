@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {  Badge, Button, Box, Grid } from "@mui/material/";
+import { Badge, Button, Box, Grid } from "@mui/material/";
 import { NavLink, useNavigate } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
@@ -10,6 +10,21 @@ import MenuIcon from "@mui/icons-material/Menu";
 function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
   const navigate = useNavigate();
   const [cart, setCart] = useRecoilState(cartAtom);
+  const [totalQuantity, setTotalQuantity] = useState('')
+  
+  const total = ()=>{
+    let totalAmount = 0
+
+    cart.forEach((item) => {
+      totalAmount += item.quantity
+    });
+
+    setTotalQuantity(totalAmount)
+  }
+
+  useEffect(()=>{
+    total()
+  },[])
 
   return (
     <Box
@@ -39,7 +54,7 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
           >
             <Box>
               <Badge
-                badgeContent={cart.length}
+                badgeContent={totalQuantity}
                 color="error"
                 display={cart.length > 0 ? "flex" : "none"}
                 sx={{ position: "absolute" }}
@@ -101,7 +116,7 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
             },
           }}
         >
-          CART {cart.length > 0 ? `(${cart.length})` : ""}
+          CART {cart.length > 0 ? `(${totalQuantity})` : ""}
         </Button>
       </Box>
     </Box>

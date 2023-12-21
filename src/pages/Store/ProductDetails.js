@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography, CircularProgress } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
 import AddToCart from "../../components/buttons/AddToCart";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -37,7 +37,15 @@ function ProductDetails({ fadeIn }) {
       sx={{ transition: "opacity .5s ease-in-out", opacity: fadeIn ? 1 : 0 }}
     >
       {isLoading ? (
-        "LOADING"
+        <Box
+          display="flex"
+          height={'100%'}
+          alignItems={"center"}
+          justifyContent={"center"}
+          pt={'20%'}
+        >
+          <CircularProgress />
+        </Box>
       ) : (
         <>
           <Box
@@ -135,9 +143,10 @@ function ProductDetails({ fadeIn }) {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                pb:5
               }}
             >
-              <img src={data.image} width={"100%"} />
+              <img src={data.image} width={"90%"} height={'450px'} />
             </Grid>
           </Grid>
         </>

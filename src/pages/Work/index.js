@@ -16,7 +16,7 @@ function Work() {
       </Typography>
 
       <Grid container display="flex" justifyContent={"space-between"} mb={5}>
-        <Grid item xs={12} sm={3.5} md={3.5}>
+        <Grid item xs={12} sm={3.5} md={3.5} pb={5}>
           <img src="https://picsum.photos/200" width={"100%"} />
 
           <Typography fontSize={12} color="#C97878" py={3}>
@@ -33,7 +33,7 @@ function Work() {
             excepteur laborum qui.
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={3.5} md={3.5}>
+        <Grid item xs={12} sm={3.5} md={3.5} pb={5}>
           <img src="https://picsum.photos/200" width={"100%"} />
           <Typography fontSize={12} color="#C97878" py={3}>
             HOW DOES IT WORK
