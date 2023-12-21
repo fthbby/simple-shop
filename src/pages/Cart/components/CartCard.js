@@ -1,8 +1,49 @@
-import React from "react";
-import { Box, Divider, Grid, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Select, MenuItem, Grid, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { useRecoilState } from "recoil";
+import { cartAtom } from "../../../stateManagement/atom/cartAtom";
 
 function CartCard({ data, onRemoveFromCart }) {
+  const [cart, setCart] = useRecoilState(cartAtom);
+
+  const [selectedQuantity, setSelectedQuantity] = useState(data.quantity);
+
+  const handleQuantityChange = (event) => {
+    const newQuantity = event.target.value;
+    setSelectedQuantity(newQuantity);
+    updateCart(data.id, data, newQuantity);
+  };
+
+  const updateCart = (productId, product, quantity) => {
+    setCart((oldCart) => {
+      const existingItemIndex = oldCart.findIndex(
+        (item) => item.id === productId
+      );
+
+      if (existingItemIndex !== -1) {
+        const updatedCart = [...oldCart];
+        updatedCart[existingItemIndex] = {
+          ...updatedCart[existingItemIndex],
+          quantity: quantity,
+        };
+
+        return updatedCart;
+      } else {
+        return [
+          ...oldCart,
+          {
+            id: productId,
+            title: product.title,
+            price: product.price,
+            image: product.image,
+            quantity: quantity,
+          },
+        ];
+      }
+    });
+  };
+
   return (
     <>
       <Grid item xs={5} sm={2} md={2}>
@@ -22,7 +63,13 @@ function CartCard({ data, onRemoveFromCart }) {
       >
         {data.title}
 
-        <Box>QTY: {data.quantity}</Box>
+        <Select value={selectedQuantity} onChange={handleQuantityChange}>
+          {Array.from({ length: 10 }, (_, index) => (
+            <MenuItem key={index + 1} value={index + 1}>
+              {index + 1}
+            </MenuItem>
+          ))}
+        </Select>
       </Grid>
       <Grid
         item

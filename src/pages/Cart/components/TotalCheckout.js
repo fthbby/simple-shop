@@ -9,7 +9,7 @@ function TotalCheckout() {
   const [total, setTotal] = useState("");
   const getCartTotal = () => {
     let total = 0;
-    cart.forEach((x) => (total += x.price));
+    cart.forEach((x) => (total += x.price * x.quantity));
     setTotal(total.toFixed(2)); // Ensure total has 2 decimal places
 };
 
