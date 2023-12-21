@@ -16,7 +16,7 @@ function CartCard({data}) {
       <Grid item xs={3} sm={4} md={4} display="flex" justifyContent={"flex-end"}>
         ${data.price}
         <CloseIcon sx={{ color: "gray" }} />
-      </Grid>
+      </Grid> 
     </>
   );
 }
