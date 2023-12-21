@@ -63,13 +63,20 @@ function CartCard({ data, onRemoveFromCart }) {
       >
         {data.title}
 
-        <Select value={selectedQuantity} onChange={handleQuantityChange}>
-          {Array.from({ length: 10 }, (_, index) => (
-            <MenuItem key={index + 1} value={index + 1}>
-              {index + 1}
-            </MenuItem>
-          ))}
-        </Select>
+        <Box>
+          QTY:{" "}
+          <Select
+            value={selectedQuantity}
+            onChange={handleQuantityChange}
+            sx={{ width: 65, height:30 }}
+          >
+            {Array.from({ length: 10 }, (_, index) => (
+              <MenuItem key={index + 1} value={index + 1}>
+                {index + 1}
+              </MenuItem>
+            ))}
+          </Select>
+        </Box>
       </Grid>
       <Grid
         item

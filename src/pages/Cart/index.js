@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { cartAtom } from "../../stateManagement/atom/cartAtom";
 import { Box, Divider, Grid, Typography } from "@mui/material";
@@ -17,7 +17,11 @@ function Cart({ fadeIn }) {
     localStorage.setItem("recoil-persist", JSON.stringify(updatedCart));
   };
 
-  console.log("local :", localStorage.getItem("recoil-persist"));
+  useEffect(() => {
+    // This code will run whenever the cart state changes
+    console.log("Cart state has been updated:", cart);
+  }, [cart]); // Add cart as a dependency
+
   return (
     <Box
       pt={"10%"}

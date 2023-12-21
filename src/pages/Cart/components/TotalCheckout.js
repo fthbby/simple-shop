@@ -15,7 +15,7 @@ function TotalCheckout() {
 
   useEffect(() => {
     getCartTotal();
-  }, []);
+  }, [cart]);
 
   return (
     <Grid container pt={3} justifyContent={"flex-end"}>
