@@ -11,6 +11,10 @@ function Cart({ fadeIn }) {
   const navigate = useNavigate();
   const [cart, setCart] = useRecoilState(cartAtom);
 
+
+
+
+  console.log('ltest :', localStorage.getItem("recoil-persist"))
   return (
     <Box
       pt={"10%"}
