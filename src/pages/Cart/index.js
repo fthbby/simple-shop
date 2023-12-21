@@ -22,6 +22,8 @@ function Cart({ fadeIn }) {
     console.log("Cart state has been updated:", cart);
   }, [cart]); // Add cart as a dependency
 
+
+  console.log('localStorage.getItem("cartAtomState") :', localStorage.getItem("recoil-persist"))
   return (
     <Box
       pt={"10%"}

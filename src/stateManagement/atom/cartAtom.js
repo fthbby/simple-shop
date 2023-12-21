@@ -5,7 +5,7 @@ const { persistAtom } = recoilPersist()
 
 
 const getInitialCartState = () => {
-  const storedState = localStorage.getItem("cartAtomState");
+  const storedState = localStorage.getItem("recoil-persist");
   return storedState ? JSON.parse(storedState) : [];
 };
 
