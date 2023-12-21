@@ -14,7 +14,9 @@ function AddToCart() {
       justifyContent={"center"}
       fontSize={14}
       fontWeight={600}
+    
       sx={{
+        cursor:'pointer',
         transition: "color 0.3s ease-in-out, background 0.3s ease-in-out",
         "&:hover": {
           color: "black",

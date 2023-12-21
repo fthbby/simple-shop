@@ -72,17 +72,19 @@ function ProductDetails({ fadeIn }) {
       </Box>
 
       <Grid container>
-        <Grid item md={6}>
+        <Grid item md={6} order={{ xs: 2, md: 1 }} pr={{ xs: 0, md: 5 }}>
           <Typography variant="h5" pb={3}>
             {data.title}
           </Typography>
           <Typography pb={3}>${data.price}</Typography>
-          <Typography>{data.description}</Typography>
+          <Typography pb={3} fontSize={12}>
+            {data.description}
+          </Typography>
 
-          <AddToCart/>
+          <AddToCart />
         </Grid>
 
-        <Grid item md={6}>
+        <Grid item md={6} order={{ xs: 1, md: 2 }}>
           <img src={data.image} width={"100%"} />
         </Grid>
       </Grid>
