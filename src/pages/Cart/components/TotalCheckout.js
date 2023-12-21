@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Divider, Grid, Typography } from "@mui/material";
-import Checkout from "../../../components/buttons/Checkout";
-
+import RedButton from "../../../components/buttons/RedButton";
+import { useRecoilState } from "recoil";
+import { cartAtom } from "../../../stateManagement/atom/cartAtom";
 
 function TotalCheckout() {
+  const [cart, setCart] = useRecoilState(cartAtom);
+  const [total, setTotal] = useState("");
+  const getCartTotal = () => {
+    let total = 0;
+    cart.forEach((x) => (total += x.price));
+    setTotal(total);
+  };
+
+  useEffect(() => {
+    getCartTotal();
+  }, []);
+
   return (
     <Grid container pt={3} justifyContent={"flex-end"}>
       <Grid item xs={0} sm={8} md={8} />
       <Grid item xs={12} sm={4} md={4}>
         <Box pb={3} display="flex" justifyContent={"space-between"}>
-          <Typography>Subtotal</Typography> $10
+          <Typography>Subtotal</Typography> ${total}
         </Box>
 
-        <Checkout />
+        <RedButton text="CHECKOUT" />
       </Grid>
     </Grid>
   );

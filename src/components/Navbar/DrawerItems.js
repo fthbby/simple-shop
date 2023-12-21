@@ -1,19 +1,15 @@
-import { useState, useEffect } from "react";
 import {
   IconButton,
   List,
   ListItem,
   ListItemButton,
   Typography,
-  Divider,
   Box,
 } from "@mui/material/";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
 
 function DrawerItems({ navItems, handleDrawerToggle }) {
-  const navigate = useNavigate();
   const location = useLocation();
   let currentPage = location.pathname;
 

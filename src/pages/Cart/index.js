@@ -2,15 +2,15 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import { cartAtom } from "../../stateManagement/atom/cartAtom";
 import { Box, Divider, Grid, Typography } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
 import CartCard from "./components/CartCard";
-import Checkout from "../../components/buttons/Checkout";
+import RedButton from "../../components/buttons/RedButton";
 import TotalCheckout from "./components/TotalCheckout";
+import { useNavigate } from "react-router-dom";
 
 function Cart({ fadeIn }) {
+  const navigate = useNavigate();
   const [cart, setCart] = useRecoilState(cartAtom);
 
-  console.log("cart :", cart);
   return (
     <Box
       pt={"10%"}
@@ -31,13 +31,19 @@ function Cart({ fadeIn }) {
             </>
           ))}
 
-          <TotalCheckout/>
+          <TotalCheckout />
         </Box>
       ) : (
-        "NO THIGN IN CART"
+        <Box width={"60%"}>
+          <Typography pb={3}>
+            You have nothing in your shopping cart.
+          </Typography>
+          <RedButton
+            text="Continue Shopping"
+            onClick={() => navigate("/store")}
+          />
+        </Box>
       )}
-
-
     </Box>
   );
 }

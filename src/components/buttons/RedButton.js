@@ -1,15 +1,14 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 
-function Checkout() {
+function RedButton({text, onClick}) {
   return (
     <Box
-    //   onClick={addTodoItem}
+      onClick={onClick}
       border={"2px solid red"}
       padding={3}
       textTransform={"uppercase"}
       color="red"
-    //   width={'100%'}
       display={"flex"}
       alignItems={"center"}
       justifyContent={"center"}
@@ -24,9 +23,9 @@ function Checkout() {
         },
       }}
     >
-     Checkout
+     {text}
     </Box>
   );
 }
 
-export default Checkout;
+export default RedButton;

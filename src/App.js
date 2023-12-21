@@ -9,13 +9,14 @@ import Work from "./pages/Work/index";
 import Store from "./pages/Store/index";
 import ProductDetails from "./pages/Store/ProductDetails";
 
-
 function App() {
   const [fadeIn, setFadeIn] = useState(false);
 
   useEffect(() => {
     setFadeIn(true);
   }, []);
+
+
 
   return (
     <Box backgroundColor="#FFFEF9" paddingY={"5%"} paddingX={"5%"}>

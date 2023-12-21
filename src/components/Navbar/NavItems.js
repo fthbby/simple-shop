@@ -37,6 +37,7 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
             sx={{ mr: 0, display: { xs: "block", sm: "none" } }}
           >
             <ShoppingCartOutlinedIcon
+            onClick={()=>navigate('/cart')}
               sx={{ fontSize: 30, cursor: "pointer", mr: 2 }}
             />
 
