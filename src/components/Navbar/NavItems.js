@@ -16,8 +16,11 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
         opacity: fadeIn ? 1 : 0,
       }}
     >
-      <Box onClick={() => navigate("/")} sx={{ cursor: "pointer" }}>
-        LOGO
+      <Box
+        onClick={() => navigate("/")}
+        sx={{ cursor: "pointer", fontFamily: "Tangerine", fontSize: 25 }}
+      >
+        Avofeed
       </Box>
       {mobileOpen ? null : (
         <Box sx={{ pt: 1, pb: 1 }}>{/* <MiniLogo /> */}</Box>
@@ -49,6 +52,8 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
             to={item.link}
             disableRipple
             sx={{
+              letterSpacing: 3,
+              fontFamily: "Sometype+Mono",
               fontWeight: 700,
               color: "#F28F59",
               fontSize: "12px",
