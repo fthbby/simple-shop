@@ -23,9 +23,9 @@ function App() {
         <Navbar fadeIn={fadeIn} />
         <Routes>
           <Route path="/" element={<Home fadeIn={fadeIn} />} />
-          <Route path="/subscriptions" element={<Subscriptions />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/work" element={<Work />} />
+          <Route path="/subscriptions" element={<Subscriptions fadeIn={fadeIn}/>} />
+          <Route path="/cart" element={<Cart fadeIn={fadeIn} />} />
+          <Route path="/work" element={<Work fadeIn={fadeIn}/>} />
           <Route path="/store" element={<Store fadeIn={fadeIn} />} />
           <Route
             path="/product/:id"

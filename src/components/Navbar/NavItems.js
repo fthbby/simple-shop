@@ -3,9 +3,12 @@ import { IconButton, Toolbar, Button, Box, Grid } from "@mui/material/";
 import { NavLink, useNavigate } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import DragHandleSharpIcon from "@mui/icons-material/DragHandleSharp";
+import { useRecoilState } from "recoil";
+import { cartAtom } from "../../stateManagement/atom/cartAtom";
 
 function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
   const navigate = useNavigate();
+  const [cart, setCart] = useRecoilState(cartAtom);
 
   return (
     <Box
@@ -53,7 +56,6 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
             disableRipple
             sx={{
               letterSpacing: 3,
-            //   fontFamily: "Sometype Mono",
               fontWeight: 700,
               color: "#F28F59",
               fontSize: "12px",
@@ -69,6 +71,27 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
             {item.name}
           </Button>
         ))}
+
+        <Button
+          component={NavLink}
+          disableRipple
+          to={"cart"}
+          sx={{
+            letterSpacing: 3,
+            fontWeight: 700,
+            color: "#F28F59",
+            fontSize: "12px",
+            padding: "0 20px",
+            "&.active": {
+              color: "#F28F59",
+            },
+            "&:hover": {
+              color: "black",
+            },
+          }}
+        >
+          CART {cart.length > 0 ? `(${cart.length})` : ''}
+        </Button>
       </Box>
     </Box>
   );

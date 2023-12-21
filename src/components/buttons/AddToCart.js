@@ -4,8 +4,6 @@ import { useRecoilState } from "recoil";
 import { cartAtom } from "../../stateManagement/atom/cartAtom";
 
 function AddToCart({ productId, product }) {
-  const [inputValue, setInputValue] = useState("");
-
   const [cart, setCart] = useRecoilState(cartAtom);
 
   const addTodoItem = () => {
@@ -16,6 +14,7 @@ function AddToCart({ productId, product }) {
           id: productId,
           title: product.title,
           price: product.price,
+          image: product.image
         },
       ]);
       //   setInputValue("");
