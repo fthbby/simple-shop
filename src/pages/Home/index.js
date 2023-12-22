@@ -31,7 +31,7 @@ function Home({}) {
             marginBottom: 30,
           }}
         />
-        WELCOME TO THIS SITE.
+        WELCOME TO SIMPLE SHOP.
       </Box>
 
       <Grid container mb={10}>
@@ -46,7 +46,7 @@ function Home({}) {
             textAlign={"center"}
             fontFamily={"Bad Script"}
           >
-            I'm Cartman
+          Aliqua ipsum exercitation.
           </Box>
           <Box textAlign={"center"} fontFamily={"Sometype Mono"} fontSize={12}>
             Cillum duis aliquip cupidatat veniam incididunt Lorem. Incididunt
@@ -88,9 +88,10 @@ function Home({}) {
           display="flex"
           flexDirection={"column"}
           alignItems={"center"}
+          pb={5}
         >
-          <Typography color="#C97878" fontSize={12} fontWeight={600}>
-            WANNA SEE THE OC?
+          <Typography color="#C97878" fontSize={12} fontWeight={600} >
+          Tempor deserunt occaecat.
           </Typography>
           <br />
           <Typography fontSize={12} fontFamily={"Sometype Mono"}>

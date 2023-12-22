@@ -9,21 +9,21 @@ import MenuIcon from "@mui/icons-material/Menu";
 function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
   const navigate = useNavigate();
   const [cart, setCart] = useRecoilState(cartAtom);
-  const [totalQuantity, setTotalQuantity] = useState('')
-  
-  const total = ()=>{
-    let totalAmount = 0
+  const [totalQuantity, setTotalQuantity] = useState("");
+
+  const total = () => {
+    let totalAmount = 0;
 
     cart.forEach((item) => {
-      totalAmount += item.quantity
+      totalAmount += item.quantity;
     });
 
-    setTotalQuantity(totalAmount)
-  }
+    setTotalQuantity(totalAmount);
+  };
 
-  useEffect(()=>{
-    total()
-  },[cart])
+  useEffect(() => {
+    total();
+  }, [cart]);
 
   return (
     <Box
@@ -36,9 +36,13 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
     >
       <Box
         onClick={() => navigate("/")}
-        sx={{ cursor: "pointer", fontFamily: "Tangerine", fontSize: 25 }}
+        sx={{
+          cursor: "pointer",
+          fontFamily: "Tangerine",
+          fontSize: 25,
+        }}
       >
-        Avofeed
+        Simple-Shop
       </Box>
       {mobileOpen ? null : (
         <Box sx={{ pt: 1, pb: 1 }}>{/* <MiniLogo /> */}</Box>
