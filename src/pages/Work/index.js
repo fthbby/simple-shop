@@ -19,8 +19,8 @@ function Work({}) {
       sx={{ transition: "opacity .5s ease-in-out", opacity: fadeIn ? 1 : 0 }}
 
     >
-      <Typography fontSize={12} color="#C97878" fontWeight={600} pb={5}>
-        LET'S WORK TOGETHER
+      <Typography fontSize={12} color="#C97878" fontWeight={600} pb={5} textTransform={'uppercase'}>
+        Reprehenderit do sunt labore esse ad.
       </Typography>
 
       <Grid container display="flex" justifyContent={"space-between"} mb={5}>
@@ -59,8 +59,8 @@ function Work({}) {
         </Grid>
         <Grid item xs={12} sm={3.5} md={3.5}>
           <img src="https://picsum.photos/200" width={"100%"} />
-          <Typography fontSize={12} color="#C97878" py={3}>
-            MARKETING MANAGEMENT
+          <Typography fontSize={12} color="#C97878" py={3} textTransform={'uppercase'}>
+            Cillum aute occaecat elit.
           </Typography>
           <Typography fontSize={12} fontFamily={"Sometype Mono"}>
             Eu nostrud ipsum duis dolor fugiat non ut Lorem sit anim aliqua
