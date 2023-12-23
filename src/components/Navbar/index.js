@@ -10,7 +10,7 @@ const drawerWidth = "100%";
 const navItems = [
   // { name: "Subscriptions", link: "/subscriptions" },
   { name: "Store", link: "/store" },
-  { name: "Work With Me", link: "/work" },
+  { name: "Contact", link: "/work" },
 ];
 
 function NavBar({}) {

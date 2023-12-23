@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import ContactForm from "../../components/ContactForm";
 
 function Work({}) {
-  
-  const [fadeIn, setFadeIn] = useState(false)
+  const [fadeIn, setFadeIn] = useState(false);
   useEffect(() => {
     setFadeIn(true);
   }, []);
@@ -17,9 +16,14 @@ function Work({}) {
       justifyContent={"center"}
       flexDirection={"column"}
       sx={{ transition: "opacity .5s ease-in-out", opacity: fadeIn ? 1 : 0 }}
-
     >
-      <Typography fontSize={12} color="#C97878" fontWeight={600} pb={5} textTransform={'uppercase'}>
+      <Typography
+        fontSize={12}
+        color="#C97878"
+        fontWeight={600}
+        pb={5}
+        textTransform={"uppercase"}
+      >
         Reprehenderit do sunt labore esse ad.
       </Typography>
 
@@ -27,8 +31,8 @@ function Work({}) {
         <Grid item xs={12} sm={3.5} md={3.5} pb={5}>
           <img src="https://picsum.photos/200" width={"100%"} />
 
-          <Typography fontSize={12} color="#C97878" py={3}>
-            WHAT YOU GET
+          <Typography fontSize={12} color="#C97878" py={3} textTransform={'uppercase'}>
+          Culpa consectetur incididunt.
           </Typography>
           <Typography fontSize={12} fontFamily={"Sometype Mono"}>
             Eu nostrud ipsum duis dolor fugiat non ut Lorem sit anim aliqua
@@ -43,8 +47,13 @@ function Work({}) {
         </Grid>
         <Grid item xs={12} sm={3.5} md={3.5} pb={5}>
           <img src="https://picsum.photos/200" width={"100%"} />
-          <Typography fontSize={12} color="#C97878" py={3}>
-            HOW DOES IT WORK
+          <Typography
+            fontSize={12}
+            color="#C97878"
+            py={3}
+            textTransform={"uppercase"}
+          >
+            Culpa consectetur incididunt.
           </Typography>
           <Typography fontSize={12} fontFamily={"Sometype Mono"}>
             Eu nostrud ipsum duis dolor fugiat non ut Lorem sit anim aliqua
@@ -59,7 +68,12 @@ function Work({}) {
         </Grid>
         <Grid item xs={12} sm={3.5} md={3.5}>
           <img src="https://picsum.photos/200" width={"100%"} />
-          <Typography fontSize={12} color="#C97878" py={3} textTransform={'uppercase'}>
+          <Typography
+            fontSize={12}
+            color="#C97878"
+            py={3}
+            textTransform={"uppercase"}
+          >
             Cillum aute occaecat elit.
           </Typography>
           <Typography fontSize={12} fontFamily={"Sometype Mono"}>
@@ -75,7 +89,14 @@ function Work({}) {
         </Grid>
       </Grid>
 
-      <Grid container py={5} display={'flex'} alignItems={'center'} justifyContent='center' flexDirection={'column'}>
+      <Grid
+        container
+        py={5}
+        display={"flex"}
+        alignItems={"center"}
+        justifyContent="center"
+        flexDirection={"column"}
+      >
         <Typography
           fontSize={12}
           color="#C97878"
@@ -86,7 +107,7 @@ function Work({}) {
           LET'S GET SOMETHING WORKING.
         </Typography>
 
-        <ContactForm/>
+        <ContactForm />
       </Grid>
     </Box>
   );
