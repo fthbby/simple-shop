@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { Avatar, Box, Button, Grid, Typography } from "@mui/material";
 import MaroonButton from "../../../components/buttons/MaroonButton";
 import ProductModal from "../../../components/modals/ProductModal";
+import DeleteButton from "../../../components/buttons/DeleteButton";
 
 function ProductList({ data }) {
   const [openEdit, setOpenEdit] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+
 
   return (
     <Grid container padding={2} paddingY={2} display="flex" alignItems="center">
@@ -23,10 +26,9 @@ function ProductList({ data }) {
       <Grid item xs={3} md={3}>
         <Box>DESCRIPTION</Box>
       </Grid>
-      <Grid item xs={2} md={2}>
-        <Box>
-          <MaroonButton title="edit" onClick={() => setOpenEdit(true)} />
-        </Box>
+      <Grid item xs={2} md={2} display="flex" justifyContent={"space-between"}>
+        <MaroonButton title="edit" onClick={() => setOpenEdit(true)} />
+        <DeleteButton onClick={()=>setOpenDelete(true)}/>
       </Grid>
 
       <ProductModal
