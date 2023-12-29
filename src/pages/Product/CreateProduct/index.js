@@ -5,7 +5,7 @@ import CreateProductModal from "../../../components/modals/CreateProductModal";
 import MaroonButton from "../../../components/buttons/MaroonButton";
 import * as productAPI from "../../../api/routes/product";
 import ProductList from "./ProductList";
-import ProductModal from "../../../components/modals/ProductModal";
+
 
 function CreateProduct() {
   const [open, setOpen] = useState(false);
@@ -25,19 +25,15 @@ function CreateProduct() {
     getAllProducts();
   }, []);
 
-  //   const onProduct = () => {
-  //     setOpenEdit(true);
-  //   };
-
   return (
-    <CustomLayout title={"List a Product"}>
+    <CustomLayout title={"your listings"}>
       <Box
         width={{ xs: "90%", sm: "70%", md: "70%" }}
         display={"flex"}
         alignItems={"center"}
         justifyContent={"center"}
       >
-        <MaroonButton title="Create a Product" onClick={() => setOpen(true)} />
+        <MaroonButton title="List a Product" onClick={() => setOpen(true)} />
       </Box>
 
       <Box mb={5}>
@@ -57,7 +53,7 @@ function CreateProduct() {
           textTransform={"uppercase"}
           backgroundColor="#C97878"
           color="white"
-          fontWeight={600}
+
           sx={{
             borderTopLeftRadius: 7,
             borderTopRightRadius: 7,

@@ -14,6 +14,7 @@ import Work from "./pages/Work/index";
 import Store from "./pages/Store/index";
 import ProductDetails from "./pages/Store/ProductDetails";
 import CreateProduct from "./pages/Product/CreateProduct";
+import Register from "./pages/Auth/Register";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
           <Route path="/store" element={<Store />} />
 
           <Route path="/product/:id" element={<ProductDetails />} />
+
+          <Route path="/register" element={<Register />} />
+
 
           <Route path="/create" element={<CreateProduct />} />
 
