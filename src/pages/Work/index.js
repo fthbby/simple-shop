@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import ContactForm from "../../components/ContactForm";
+import CustomLayout from "../../layouts/CustomLayout";
 
 function Work({}) {
   const [fadeIn, setFadeIn] = useState(false);
@@ -9,30 +10,18 @@ function Work({}) {
   }, []);
 
   return (
-    <Box
-      mt={"10%"}
-      display={"flex"}
-      alignItems={"center"}
-      justifyContent={"center"}
-      flexDirection={"column"}
-      sx={{ transition: "opacity .5s ease-in-out", opacity: fadeIn ? 1 : 0 }}
-    >
-      <Typography
-        fontSize={12}
-        color="#C97878"
-        fontWeight={600}
-        pb={5}
-        textTransform={"uppercase"}
-      >
-        Reprehenderit do sunt labore esse ad.
-      </Typography>
-
+    <CustomLayout title={"Reprehenderit do sunt labore esse ad."}>
       <Grid container display="flex" justifyContent={"space-between"} mb={5}>
         <Grid item xs={12} sm={3.5} md={3.5} pb={5}>
           <img src="https://picsum.photos/200" width={"100%"} />
 
-          <Typography fontSize={12} color="#C97878" py={3} textTransform={'uppercase'}>
-          Culpa consectetur incididunt.
+          <Typography
+            fontSize={12}
+            color="#C97878"
+            py={3}
+            textTransform={"uppercase"}
+          >
+            Culpa consectetur incididunt.
           </Typography>
           <Typography fontSize={12} fontFamily={"Sometype Mono"}>
             Eu nostrud ipsum duis dolor fugiat non ut Lorem sit anim aliqua
@@ -109,7 +98,7 @@ function Work({}) {
 
         <ContactForm />
       </Grid>
-    </Box>
+    </CustomLayout>
   );
 }
 

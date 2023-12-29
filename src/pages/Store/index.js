@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import Product from "./components/Product";
+import CustomLayout from "../../layouts/CustomLayout";
 
 function Store({}) {
   const [products, setProducts] = useState([]);
@@ -22,25 +23,8 @@ function Store({}) {
     getAllProducts();
   }, []);
   return (
-    <Box
-      display="flex"
-      alignItems={"center"}
-      justifyContent={"center"}
-      pt={"10%"}
-      flexDirection={"column"}
-      sx={{ transition: "opacity .3s ease-in-out", opacity: fadeIn ? 1 : 0 }}
-    >
+    <CustomLayout title={"EVERYTHING YOU NEED TO KNOW ABOUT AVO COUNTY."}>
       <Box width={{ xs: "90%", sm: "70%", md: "70%" }}>
-        <Typography
-          color="#C97878"
-          fontWeight={600}
-          fontSize={12}
-          letterSpacing={1}
-          textAlign={"center"}
-          pb={3}
-        >
-          EVERYTHING YOU NEED TO KNOW ABOUT AVO COUNTY.
-        </Typography>
         <Typography
           textAlign={"center"}
           fontSize={12}
@@ -85,7 +69,7 @@ function Store({}) {
           ))}
         </Grid>
       )}
-    </Box>
+    </CustomLayout>
   );
 }
 

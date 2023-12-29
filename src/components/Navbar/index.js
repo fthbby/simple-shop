@@ -8,9 +8,11 @@ import NavItems from "./NavItems";
 const drawerWidth = "100%";
 
 const navItems = [
-  // { name: "Subscriptions", link: "/subscriptions" },
+  { name: "Sell", link: "/create" },
   { name: "Store", link: "/store" },
   { name: "Contact", link: "/work" },
+    // { name: "Subscriptions", link: "/subscriptions" },
+
 ];
 
 function NavBar({}) {
