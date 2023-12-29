@@ -10,7 +10,7 @@ const drawerWidth = "100%";
 const navItems = [
   { name: "Sell", link: "/create" },
   // { name: "Login", link: "/login" },
-  { name: "Register", link: "/register" },
+  // { name: "Register", link: "/register" },
 
   { name: "Store", link: "/store" },
   { name: "Contact", link: "/work" },

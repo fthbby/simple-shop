@@ -15,6 +15,7 @@ import Store from "./pages/Store/index";
 import ProductDetails from "./pages/Store/ProductDetails";
 import CreateProduct from "./pages/Product/CreateProduct";
 import Register from "./pages/Auth/Register";
+import Login from "./pages/Auth/Login";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/product/:id" element={<ProductDetails />} />
 
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
 
 
           <Route path="/create" element={<CreateProduct />} />
