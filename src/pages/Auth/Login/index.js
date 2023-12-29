@@ -25,9 +25,13 @@ function Login() {
       console.log("res :", res.data);
       if (res.data.success) {
         setUser(res.data.data);
-        navigate('/')
+        navigate("/");
       }
     } catch (err) {}
+  };
+
+  const onSignUp = () => {
+    navigate("/register");
   };
   return (
     <CustomLayout title="Login">
@@ -60,10 +64,35 @@ function Login() {
             justifyContent={"center"}
             width={"100%"}
             mt={3}
+            mb={3}
           >
             <MaroonButton title="Login" onClick={onLogin} />
           </Box>
         </Grid>
+
+        <Box display={"flex"} flexDirection={"row"} justifyContent={"center"}>
+          <Typography
+            color="#C97878"
+            fontWeight={600}
+            fontSize={12}
+            letterSpacing={1}
+            textTransform={"uppercase"}
+            mr={1}
+          >
+            No Account?
+          </Typography>
+
+          <Typography
+            fontWeight={600}
+            fontSize={12}
+            letterSpacing={1}
+            textTransform={"uppercase"}
+            sx={{ cursor: "pointer" }}
+            onClick={onSignUp}
+          >
+            Sign Up
+          </Typography>
+        </Box>
       </Box>
     </CustomLayout>
   );

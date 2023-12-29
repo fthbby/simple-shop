@@ -34,6 +34,9 @@ function Register() {
     } catch (err) {}
   };
 
+  const onLogin = () => {
+    navigate("/login");
+  };
   return (
     <CustomLayout title={"Register"}>
       <Box width={400} mt={5}>
@@ -82,10 +85,39 @@ function Register() {
             justifyContent={"center"}
             width={"100%"}
             mt={3}
+            mb={3}
           >
             <MaroonButton title="Register" onClick={onRegister} />
           </Box>
         </Grid>
+
+        <Box
+          display={"flex"}
+          flexDirection={"row"}
+          justifyContent={"center"}
+        >
+          <Typography
+            color="#C97878"
+            fontWeight={600}
+            fontSize={12}
+            letterSpacing={1}
+            textTransform={"uppercase"}
+            mr={1}
+          >
+            Already have an account?
+          </Typography>
+
+          <Typography
+            fontWeight={600}
+            fontSize={12}
+            letterSpacing={1}
+            textTransform={"uppercase"}
+            sx={{ cursor: "pointer" }}
+            onClick={onLogin}
+          >
+            Login
+          </Typography>
+        </Box>
       </Box>
     </CustomLayout>
   );
