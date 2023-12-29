@@ -25,9 +25,9 @@ function CreateProduct() {
     getAllProducts();
   }, []);
 
-//   const onProduct = () => {
-//     setOpenEdit(true);
-//   };
+  //   const onProduct = () => {
+  //     setOpenEdit(true);
+  //   };
 
   return (
     <CustomLayout title={"List a Product"}>
@@ -44,14 +44,25 @@ function CreateProduct() {
         <CreateProductModal open={open} onClose={() => setOpen(false)} />
       </Box>
 
-      <Grid container border={"1px solid black"} borderRadius={2}>
+      <Grid
+        container
+        border={"1px solid black"}
+        borderRadius={2}
+        maxWidth={800}
+      >
         <Grid
           container
           padding={2}
           borderBottom={"1px solid gray"}
           textTransform={"uppercase"}
+          backgroundColor="#C97878"
+          fontWeight={600}
+          sx={{
+            borderTopLeftRadius: 7,
+            borderTopRightRadius: 7,
+          }}
         >
-          <Grid item xs={1} md={1}>
+          <Grid item xs={1} sm={1} md={1}>
             IMG
           </Grid>
           <Grid item xs={2} md={2}>
@@ -73,12 +84,11 @@ function CreateProduct() {
 
         {products.map((x) => (
           <>
-            <ProductList data={x}  />
+            <ProductList data={x} />
             <Divider />
           </>
         ))}
       </Grid>
-    
     </CustomLayout>
   );
 }

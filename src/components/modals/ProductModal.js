@@ -112,6 +112,7 @@ function ProductModal({ open, onClose, data }) {
             justifyContent={"space-between"}
             width={"100%"}
           >
+          
             <WhiteButton title="Save As Draft" />
             <MaroonButton title="Update" onClick={updateProduct} />
           </Box>

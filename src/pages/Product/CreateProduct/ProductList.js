@@ -4,14 +4,21 @@ import MaroonButton from "../../../components/buttons/MaroonButton";
 import ProductModal from "../../../components/modals/ProductModal";
 import DeleteButton from "../../../components/buttons/DeleteButton";
 import DeleteModal from "../../../components/modals/DeleteModal";
+import EditButton from "../../../components/buttons/EditButton";
 
 function ProductList({ data }) {
   const [openEdit, setOpenEdit] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
 
   return (
-    <Grid container padding={2} paddingY={2} display="flex" alignItems="center">
-      <Grid item xs={1} md={1}>
+    <Grid
+      container
+      padding={2}
+      paddingY={2}
+      display="flex"
+      alignItems="center"
+    >
+      <Grid item xs={1} sm={1} md={1}>
         <Avatar sx={{ borderRadius: 1 }} />
       </Grid>
       <Grid item xs={2} md={2}>
@@ -21,13 +28,23 @@ function ProductList({ data }) {
         <Box>${data?.price ? data.price : 0}</Box>
       </Grid>
       <Grid item xs={2} md={2}>
-        <Box>{data?.category ? data?.category : ''}</Box>
+        <Box>{data?.category ? data?.category : ""}</Box>
       </Grid>
       <Grid item xs={3} md={3}>
-        <Box>{data?.description ? data?.description : ''}</Box>
+        <Box>{data?.description ? data?.description : ""}</Box>
       </Grid>
       <Grid item xs={2} md={2} display="flex" justifyContent={"space-between"}>
-        <MaroonButton title="edit" onClick={() => setOpenEdit(true)} />
+        <MaroonButton
+          title="edit"
+          onClick={() => setOpenEdit(true)}
+          display={{ xs: "none", sm: "flex" }}
+        />
+
+        <EditButton
+          onClick={() => setOpenEdit(true)}
+          display={{ xs: "flex", sm: "none" }}
+        />
+
         <DeleteButton onClick={() => setOpenDelete(true)} />
       </Grid>
 

@@ -1,12 +1,13 @@
 import React from "react";
 import { Button, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-function DeleteButton({ onClick, ...props }) {
+import { Edit } from "@mui/icons-material";
+function EditButton({ onClick, ...props }) {
   return (
     <Box
       onClick={onClick}
       sx={{
-        backgroundColor: "black",
+        background: "#C97878",
         width: 25,
         height: 25,
         padding: 1,
@@ -15,12 +16,12 @@ function DeleteButton({ onClick, ...props }) {
         justifyContent: "center",
         borderRadius: 1,
         cursor: "pointer",
-        ...props
+        ...props,
       }}
     >
-      <CloseIcon sx={{ color: "white" }} />
+      <Edit sx={{ color: "white" }} />
     </Box>
   );
 }
 
-export default DeleteButton;
+export default EditButton;

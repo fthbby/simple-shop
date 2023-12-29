@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 
-function MaroonButton({ onClick, title }) {
+function MaroonButton({ onClick, title, ...props }) {
   return (
     <Button
       onClick={onClick}
@@ -12,6 +12,7 @@ function MaroonButton({ onClick, title }) {
         textTransform: "uppercase",
         padding: 1,
         paddingX: 2,
+        ...props,
       }}
     >
       {title}
