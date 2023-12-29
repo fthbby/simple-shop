@@ -15,19 +15,10 @@ function ProductDetails({}) {
     setFadeIn(true);
   }, []);
 
-  // const grabProduct = async () => {
-  //   try {
-  //     setIsLoading(true);
-  //     let res = await fetch(`https://fakestoreapi.com/products/${id}`);
-  //     let data = await res.json();
-  //     console.log("data :", data);
-  //     setData(data);
-  //     setIsLoading(false);
-  //   } catch (error) {
-  //     setIsLoading(false);
-  //     console.error("Error fetching product:", error.message);
-  //   }
-  // };
+
+  const onSeller = ()=>{
+    console.log('seller :', data.user._id)
+  }
 
   const onNext = () => {
     navigate(`/product/${Number(id) + 1}`);
@@ -39,7 +30,6 @@ function ProductDetails({}) {
       let res = await productAPI.getById(id);
       if (res.data.success) {
         setIsLoading(false);
-
         setData(res.data.data);
       }
       setIsLoading(false);
@@ -142,6 +132,9 @@ function ProductDetails({}) {
               <Typography variant="h5" pb={3}>
                 {data.title}
               </Typography>
+              <Typography variant='h7' gutterBottom onClick={onSeller} sx={{cursor:'pointer', color:'blue'}}>
+                seller: {data?.user?.firstName}
+              </Typography>
               <Typography pb={3} fontFamily={"Sometype Mono"}>
                 ${data.price}
               </Typography>
@@ -152,12 +145,12 @@ function ProductDetails({}) {
               <AddToCart productId={id} product={data} />
             </Grid>
 
-            <Grid item md={2} order={{ xs: 1 }} />
+            <Grid item sm={2} md={1} order={{ xs: 1 }} />
             <Grid
               item
               xs={12}
               sm={6}
-              md={4}
+              md={5}
               order={{ xs: 1}}
               sx={{
                 display: "flex",
