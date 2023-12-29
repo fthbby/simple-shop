@@ -6,6 +6,10 @@ export const getAll = async (data) => {
   return res;
 };
 
+export const getAllByUser = async (id, data) => {
+  const res = await get(`${BASE}/${id}`, data);
+  return res;
+};
 export const getById = async (id, data) => {
   const res = get(`${BASE}/${id}`);
   return res;

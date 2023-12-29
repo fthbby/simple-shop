@@ -12,16 +12,20 @@ import CustomInput from "../input/CustomInput";
 import MaroonButton from "../buttons/MaroonButton";
 import WhiteButton from "../buttons/WhiteButton";
 import * as productAPI from "../../api/routes/product";
-
+import { useRecoilState } from "recoil";
+import { userAtom } from "../../stateManagement/atom/userAtom";
 function CreateProductModal({ open, onClose }) {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
+const [user, setUser] = useRecoilState(userAtom)
 
+// console.log('user :', user)
   const createProduct = async () => {
     try {
       let data = {
+        userId:user._id,
         title,
         price,
         category,
