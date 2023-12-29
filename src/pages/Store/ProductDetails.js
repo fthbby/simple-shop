@@ -3,37 +3,53 @@ import { Box, Grid, Typography, CircularProgress } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
 import AddToCart from "../../components/buttons/AddToCart";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import * as productAPI from "../../api/routes/product";
 
-function ProductDetails({ }) {
+function ProductDetails({}) {
   const { id } = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [fadeIn, setFadeIn] = useState(false)
+  const [fadeIn, setFadeIn] = useState(false);
   useEffect(() => {
     setFadeIn(true);
   }, []);
 
-
-  const grabProduct = async () => {
-    try {
-      setIsLoading(true);
-      let res = await fetch(`https://fakestoreapi.com/products/${id}`);
-      let data = await res.json();
-      console.log("data :", data);
-      setData(data);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      console.error("Error fetching product:", error.message);
-    }
-  };
+  // const grabProduct = async () => {
+  //   try {
+  //     setIsLoading(true);
+  //     let res = await fetch(`https://fakestoreapi.com/products/${id}`);
+  //     let data = await res.json();
+  //     console.log("data :", data);
+  //     setData(data);
+  //     setIsLoading(false);
+  //   } catch (error) {
+  //     setIsLoading(false);
+  //     console.error("Error fetching product:", error.message);
+  //   }
+  // };
 
   const onNext = () => {
     navigate(`/product/${Number(id) + 1}`);
   };
+
+  const getProduct = async () => {
+    try {
+      setIsLoading(true);
+      let res = await productAPI.getById(id);
+      if (res.data.success) {
+        setIsLoading(false);
+
+        setData(res.data.data);
+      }
+      setIsLoading(false);
+    } catch (err) {
+      console.error("Error fetching product:", err);
+    }
+  };
+
   useEffect(() => {
-    grabProduct();
+    getProduct();
   }, [id]);
 
   return (
@@ -44,10 +60,10 @@ function ProductDetails({ }) {
       {isLoading ? (
         <Box
           display="flex"
-          height={'100%'}
+          height={"100%"}
           alignItems={"center"}
           justifyContent={"center"}
-          pt={'20%'}
+          pt={"20%"}
         >
           <CircularProgress />
         </Box>
@@ -115,11 +131,10 @@ function ProductDetails({ }) {
             <Grid
               item
               md={6}
-              order={{ xs: 2, md: 1 }}
+              order={{ xs: 2,sm:1, md: 1 }}
               pr={{ xs: 0, md: 5 }}
               sx={{
                 display: "flex",
-                // alignItems: "center",
                 flexDirection: "column",
                 justifyContent: "center",
               }}
@@ -137,21 +152,25 @@ function ProductDetails({ }) {
               <AddToCart productId={id} product={data} />
             </Grid>
 
-            <Grid item md={2} order={{ md: 1 }} />
+            <Grid item md={2} order={{ xs: 1 }} />
             <Grid
               item
               xs={12}
               sm={6}
               md={4}
-              order={{ xs: 1, md: 2 }}
+              order={{ xs: 1}}
               sx={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                pb:5
+                pb: 5,
               }}
             >
-              <img src={data.image} width={"90%"} height={'450px'} />
+              <img
+                src={data.image ? data.image : "https://picsum.photos/200/300"}
+                width={"90%"}
+                height={"450px"}
+              />
             </Grid>
           </Grid>
         </>

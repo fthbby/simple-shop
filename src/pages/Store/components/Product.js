@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 function Product({ data }) {
   const navigate = useNavigate();
 
+
   return (
     <Box
       display="flex"
       flexDirection={"column"}
       width={250}
-      onClick={() => navigate(`/product/${data?.id}`)}
+      onClick={() => navigate(`/product/${data?._id}`)}
       sx={{
         cursor: "pointer",
 
@@ -25,7 +26,6 @@ function Product({ data }) {
         src={data?.image ? data.image : "https://picsum.photos/200/300"}
         width={250}
         height={250}
-
       />
 
       <Typography fontSize={12} textTransform={"uppercase"} fontWeight={600}>

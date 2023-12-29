@@ -30,7 +30,7 @@ function CreateProduct() {
       let res = await productAPI.getAllByUser(user._id);
       // setProducts(res.data.data);
 
-      // console.log('res :', res.data)
+      console.log('res :', res.data)
     } catch (err) {}
   };
   useEffect(() => {
