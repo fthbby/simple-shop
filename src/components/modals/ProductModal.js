@@ -14,28 +14,32 @@ import WhiteButton from "../buttons/WhiteButton";
 import * as productAPI from "../../api/routes/product";
 
 function ProductModal({ open, onClose, data }) {
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('');
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
 
-  const createProduct = async () => {
+  const updateProduct = async () => {
     try {
-      let data = {
+      let datas = {
+        id: data._id,
         title,
         price,
         category,
         description,
       };
-      let res = await productAPI.create(data);
+      let res = await productAPI.update(datas);
+      console.log('datas:', datas)
       console.log("data :", res.data);
       if (res?.data?.success) {
         onClose();
+        window.location.reload()
       }
     } catch (err) {
       console.log("err :", err);
     }
   };
+
 
   return (
     <Modal open={open} onClose={onClose}>
@@ -69,7 +73,9 @@ function ProductModal({ open, onClose, data }) {
           <Grid item xs={5.75} pb={2}>
             <CustomInput
               title={"Title"}
-              value={data.title}
+              value={title}
+              placeholder={data.title}
+              
               onChange={(e) => setTitle(e.target.value)}
             />
           </Grid>
@@ -77,7 +83,7 @@ function ProductModal({ open, onClose, data }) {
           <Grid item xs={5.75} pb={2}>
             <CustomInput
               title={"Price"}
-              value={data.price}
+              value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
           </Grid>
@@ -104,7 +110,7 @@ function ProductModal({ open, onClose, data }) {
             width={"100%"}
           >
             <WhiteButton title="Save As Draft" />
-            <MaroonButton title="Update" onClick={createProduct} />
+            <MaroonButton title="Update" onClick={updateProduct} />
           </Box>
         </Grid>
       </Box>
