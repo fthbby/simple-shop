@@ -1,9 +1,10 @@
 import React from "react";
 import { Button, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-function DeleteButton() {
+function DeleteButton({ onClick }) {
   return (
     <Box
+      onClick={onClick}
       sx={{
         backgroundColor: "black",
         width: 25,
@@ -13,7 +14,7 @@ function DeleteButton() {
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 1,
-        cursor:'pointer'
+        cursor: "pointer",
       }}
     >
       <CloseIcon sx={{ color: "white" }} />

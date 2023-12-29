@@ -28,9 +28,9 @@ function CreateProductModal({ open, onClose }) {
         description,
       };
       let res = await productAPI.create(data);
-      console.log("data :", res.data);
       if (res?.data?.success) {
-        onClose()
+        onClose();
+        window.location.reload()
       }
     } catch (err) {
       console.log("err :", err);
@@ -69,6 +69,7 @@ function CreateProductModal({ open, onClose }) {
           <Grid item xs={5.75} pb={2}>
             <CustomInput
               title={"Title"}
+              value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </Grid>
@@ -76,6 +77,7 @@ function CreateProductModal({ open, onClose }) {
           <Grid item xs={5.75} pb={2}>
             <CustomInput
               title={"Price"}
+              value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
           </Grid>
@@ -83,6 +85,7 @@ function CreateProductModal({ open, onClose }) {
           <Grid item xs={5.75} pb={2}>
             <CustomInput
               title={"Category"}
+              value={category}
               onChange={(e) => setCategory(e.target.value)}
             />
           </Grid>
@@ -90,6 +93,7 @@ function CreateProductModal({ open, onClose }) {
           <Grid item xs={12} md={12} pb={2} width={"100%"}>
             <CustomInput
               title={"Description"}
+              value={description}
               multiline
               rows={4}
               onChange={(e) => setDescription(e.target.value)}

@@ -14,10 +14,10 @@ import WhiteButton from "../buttons/WhiteButton";
 import * as productAPI from "../../api/routes/product";
 
 function ProductModal({ open, onClose, data }) {
-  const [title, setTitle] = useState('');
-  const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState(data.title || "");
+  const [price, setPrice] = useState(data.price || "");
+  const [category, setCategory] = useState(data.category || "");
+  const [description, setDescription] = useState(data.description || "");
 
   const updateProduct = async () => {
     try {
@@ -29,17 +29,16 @@ function ProductModal({ open, onClose, data }) {
         description,
       };
       let res = await productAPI.update(datas);
-      console.log('datas:', datas)
+      console.log("datas:", datas);
       console.log("data :", res.data);
       if (res?.data?.success) {
         onClose();
-        window.location.reload()
+        window.location.reload();
       }
     } catch (err) {
       console.log("err :", err);
     }
   };
-
 
   return (
     <Modal open={open} onClose={onClose}>
@@ -75,7 +74,6 @@ function ProductModal({ open, onClose, data }) {
               title={"Title"}
               value={title}
               placeholder={data.title}
-              
               onChange={(e) => setTitle(e.target.value)}
             />
           </Grid>
@@ -84,6 +82,7 @@ function ProductModal({ open, onClose, data }) {
             <CustomInput
               title={"Price"}
               value={price}
+              placeholder={data.price}
               onChange={(e) => setPrice(e.target.value)}
             />
           </Grid>
@@ -91,6 +90,8 @@ function ProductModal({ open, onClose, data }) {
           <Grid item xs={5.75} pb={2}>
             <CustomInput
               title={"Category"}
+              value={category}
+              placeholder={data.category}
               onChange={(e) => setCategory(e.target.value)}
             />
           </Grid>
@@ -100,6 +101,8 @@ function ProductModal({ open, onClose, data }) {
               title={"Description"}
               multiline
               rows={4}
+              value={description}
+              placeholder={data.description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </Grid>

@@ -10,7 +10,7 @@ import ProductModal from "../../../components/modals/ProductModal";
 function CreateProduct() {
   const [open, setOpen] = useState(false);
   const [products, setProducts] = useState([]);
-//   const [openEdit, setOpenEdit] = useState(false);
+
   const getAllProducts = async () => {
     try {
       let res = await productAPI.getAll();

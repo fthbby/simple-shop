@@ -16,10 +16,8 @@ export const create = async (data) => {
   return res;
 };
 
-export const update = async ( data) => {
-  // const res = put(`${BASE}/${id}`, data);
+export const update = async (data) => {
   const res = put(`${BASE}/`, data);
-
   return res;
 };
 
