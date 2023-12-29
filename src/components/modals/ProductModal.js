@@ -13,7 +13,7 @@ import MaroonButton from "../buttons/MaroonButton";
 import WhiteButton from "../buttons/WhiteButton";
 import * as productAPI from "../../api/routes/product";
 
-function CreateProductModal({ open, onClose }) {
+function ProductModal({ open, onClose, data }) {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
@@ -30,7 +30,7 @@ function CreateProductModal({ open, onClose }) {
       let res = await productAPI.create(data);
       console.log("data :", res.data);
       if (res?.data?.success) {
-        onClose()
+        onClose();
       }
     } catch (err) {
       console.log("err :", err);
@@ -50,7 +50,7 @@ function CreateProductModal({ open, onClose }) {
             padding={1}
           >
             <Typography fontWeight={600} textTransform={"uppercase"}>
-              Add a Product To Sell
+              EDIT PRODUCT
             </Typography>
           </Grid>
           <Grid item xs={1}>
@@ -69,6 +69,7 @@ function CreateProductModal({ open, onClose }) {
           <Grid item xs={5.75} pb={2}>
             <CustomInput
               title={"Title"}
+              value={data.title}
               onChange={(e) => setTitle(e.target.value)}
             />
           </Grid>
@@ -76,6 +77,7 @@ function CreateProductModal({ open, onClose }) {
           <Grid item xs={5.75} pb={2}>
             <CustomInput
               title={"Price"}
+              value={data.price}
               onChange={(e) => setPrice(e.target.value)}
             />
           </Grid>
@@ -101,8 +103,8 @@ function CreateProductModal({ open, onClose }) {
             justifyContent={"space-between"}
             width={"100%"}
           >
-            <WhiteButton title="Save Draft" />
-            <MaroonButton title="Submit" onClick={createProduct} />
+            <WhiteButton title="Save As Draft" />
+            <MaroonButton title="Update" onClick={createProduct} />
           </Box>
         </Grid>
       </Box>
@@ -110,7 +112,7 @@ function CreateProductModal({ open, onClose }) {
   );
 }
 
-export default CreateProductModal;
+export default ProductModal;
 
 const styles = {
   modal: {

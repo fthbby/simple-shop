@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Typography, Input } from "@mui/material";
 
-function CustomInput({ title, ...props }) {
+function CustomInput({ title,onChange,value='', ...props }) {
   return (
     <Box>
       <Typography fontSize={12} fontWeight={600}>
@@ -9,12 +9,14 @@ function CustomInput({ title, ...props }) {
       </Typography>
       <Input
         disableUnderline
+        onChange={onChange}
         sx={{
           border: "1px solid gray",
           borderRadius: 1,
           paddingLeft: 1,
           width: "100%",
         }}
+        value={value}
         {...props}
       />
     </Box>

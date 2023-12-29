@@ -2,7 +2,7 @@ import { post, put, destroy, get } from "../base";
 const BASE = "product";
 
 export const getAll = async (data) => {
-  const res = get(`${BASE}/`, data);
+  const res = await get(`${BASE}/`, data);
   return res;
 };
 
