@@ -22,7 +22,7 @@ function DeleteModal({ product, open, onClose }) {
     <Modal open={open} onClose={onClose}>
       <Box style={styles.modal} padding={3}>
         <Box>
-          <Typography textTransform={"uppercase"} mb={3}>
+          <Typography textTransform={"uppercase"} mb={3} textAlign={'center'}>
             Are you sure you want to delete
             <Box
               display={"flex"}

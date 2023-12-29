@@ -56,6 +56,7 @@ function CreateProduct() {
           borderBottom={"1px solid gray"}
           textTransform={"uppercase"}
           backgroundColor="#C97878"
+          color="white"
           fontWeight={600}
           sx={{
             borderTopLeftRadius: 7,
@@ -65,17 +66,24 @@ function CreateProduct() {
           <Grid item xs={1} sm={1} md={1}>
             IMG
           </Grid>
-          <Grid item xs={2} md={2}>
+          <Grid item xs={3} md={3}>
             Title
           </Grid>
-          <Grid item xs={2} md={2}>
-            Price
+          <Grid item xs={1} md={1}>
+            <Typography display={{ xs: "none", sm: "flex" }}>COST</Typography>
+            <Typography display={{ xs: "flex", sm: "none" }}>$</Typography>
           </Grid>
           <Grid item xs={2} md={2}>
-            Category
+            <Typography display={{ xs: "none", sm: "flex" }}>
+              Category
+            </Typography>
+            <Typography display={{ xs: "flex", sm: "none" }}>Categ.</Typography>{" "}
           </Grid>
           <Grid item xs={3} md={3}>
-            Description
+            <Typography display={{ xs: "none", sm: "flex" }}>
+              Description
+            </Typography>
+            <Typography display={{ xs: "flex", sm: "none" }}>Desc.</Typography>{" "}
           </Grid>
           <Grid item xs={2} md={2}>
             Action

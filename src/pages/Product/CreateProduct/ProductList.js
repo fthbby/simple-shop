@@ -21,10 +21,10 @@ function ProductList({ data }) {
       <Grid item xs={1} sm={1} md={1}>
         <Avatar sx={{ borderRadius: 1 }} />
       </Grid>
-      <Grid item xs={2} md={2}>
+      <Grid item xs={3} md={3}>
         <Box>{data.title}</Box>
       </Grid>
-      <Grid item xs={2} md={2}>
+      <Grid item xs={1} md={1}>
         <Box>${data?.price ? data.price : 0}</Box>
       </Grid>
       <Grid item xs={2} md={2}>
