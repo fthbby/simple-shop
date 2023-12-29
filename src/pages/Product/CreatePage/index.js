@@ -13,10 +13,12 @@ function CreateProduct() {
   const [open, setOpen] = useState(false);
   const [products, setProducts] = useState([]);
   const [user, setUser] = useRecoilState(userAtom);
+
+
   const getAllProducts = async () => {
     try {
       let res = await productAPI.getAll();
-      // console.log("res :", res.data.data);
+
       setProducts(res.data.data);
     } catch (err) {
       console.log("err:", err);
@@ -28,7 +30,7 @@ function CreateProduct() {
       let res = await productAPI.getAllByUser(user._id);
       // setProducts(res.data.data);
 
-      console.log('res :', res.data)
+      // console.log('res :', res.data)
     } catch (err) {}
   };
   useEffect(() => {

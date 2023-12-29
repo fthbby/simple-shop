@@ -10,7 +10,7 @@ function Product({ data }) {
       display="flex"
       flexDirection={"column"}
       width={250}
-      onClick={() => navigate(`/product/${data.id}`)}
+      onClick={() => navigate(`/product/${data?.id}`)}
       sx={{
         cursor: "pointer",
 
@@ -22,10 +22,10 @@ function Product({ data }) {
     >
       <Box
         component={"img"}
-        src={data.image}
+        src={data?.image ? data.image : "https://picsum.photos/200/300"}
         width={250}
         height={250}
-        sx={{}}
+
       />
 
       <Typography fontSize={12} textTransform={"uppercase"} fontWeight={600}>

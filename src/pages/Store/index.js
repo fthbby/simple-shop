@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import Product from "./components/Product";
 import CustomLayout from "../../layouts/CustomLayout";
+import * as productAPI from "../../api/routes/product";
 
 function Store({}) {
   const [products, setProducts] = useState([]);
@@ -12,11 +13,21 @@ function Store({}) {
   }, []);
 
   const getAllProducts = async () => {
-    setIsLoading(true);
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setProducts(json));
-    setIsLoading(false);
+    try {
+      setIsLoading(true);
+      let res = await productAPI.getAll();
+      console.log("res :", res.data.data);
+      if (res.data.success) {
+        setProducts(res.data.data);
+      }
+
+      setIsLoading(false);
+    } catch (err) {}
+    // setIsLoading(true);
+    // fetch("https://fakestoreapi.com/products")
+    //   .then((res) => res.json())
+    //   .then((json) => setProducts(json));
+    // setIsLoading(false);
   };
 
   useEffect(() => {
