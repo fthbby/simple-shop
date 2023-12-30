@@ -51,7 +51,7 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Grid>
-          <Grid item xs={12} sm={12} md={5.75} pb={2}>
+          <Grid item xs={12} sm={12} md={12} pb={2}>
             <CustomInput
               title="Password"
               value={password}

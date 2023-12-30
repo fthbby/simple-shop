@@ -14,12 +14,11 @@ function CreateProduct() {
   const [products, setProducts] = useState([]);
   const [user, setUser] = useRecoilState(userAtom);
 
-
   const getAllProducts = async () => {
     try {
       let res = await productAPI.getAll();
 
-      setProducts(res.data.data);
+      // setProducts(res.data.data);
     } catch (err) {
       console.log("err:", err);
     }
@@ -28,14 +27,14 @@ function CreateProduct() {
   const getAllProductsByUser = async () => {
     try {
       let res = await productAPI.getAllByUser(user._id);
-      // setProducts(res.data.data);
+      setProducts(res.data.data);
 
-      console.log('res :', res.data)
+      console.log("res :", res.data);
     } catch (err) {}
   };
   useEffect(() => {
     getAllProducts();
-    getAllProductsByUser()
+    getAllProductsByUser();
   }, []);
 
   return (
@@ -54,62 +53,66 @@ function CreateProduct() {
           <CreateProductModal open={open} onClose={() => setOpen(false)} />
         </Box>
 
-        <Grid
-          container
-          border={"1px solid black"}
-          borderRadius={2}
-          maxWidth={800}
-        >
+        {products.length > 0 ? (
           <Grid
             container
-            padding={2}
-            borderBottom={"1px solid gray"}
-            textTransform={"uppercase"}
-            backgroundColor="#C97878"
-            color="white"
-            sx={{
-              borderTopLeftRadius: 7,
-              borderTopRightRadius: 7,
-            }}
+            border={"1px solid black"}
+            borderRadius={2}
+            maxWidth={800}
           >
-            <Grid item xs={1} sm={1} md={1}>
-              IMG
+            <Grid
+              container
+              padding={2}
+              borderBottom={"1px solid gray"}
+              textTransform={"uppercase"}
+              backgroundColor="#C97878"
+              color="white"
+              sx={{
+                borderTopLeftRadius: 7,
+                borderTopRightRadius: 7,
+              }}
+            >
+              <Grid item xs={1} sm={1} md={1}>
+                IMG
+              </Grid>
+              <Grid item xs={3} md={3}>
+                Title
+              </Grid>
+              <Grid item xs={1} md={1}>
+                <Typography display={{ xs: "none", sm: "flex" }}>
+                  COST
+                </Typography>
+                <Typography display={{ xs: "flex", sm: "none" }}>$</Typography>
+              </Grid>
+              <Grid item xs={2} md={2}>
+                <Typography display={{ xs: "none", sm: "flex" }}>
+                  Category
+                </Typography>
+                <Typography display={{ xs: "flex", sm: "none" }}>
+                  Categ.
+                </Typography>{" "}
+              </Grid>
+              <Grid item xs={3} md={3}>
+                <Typography display={{ xs: "none", sm: "flex" }}>
+                  Description
+                </Typography>
+                <Typography display={{ xs: "flex", sm: "none" }}>
+                  Desc.
+                </Typography>{" "}
+              </Grid>
+              <Grid item xs={2} md={2}>
+                Action
+              </Grid>
             </Grid>
-            <Grid item xs={3} md={3}>
-              Title
-            </Grid>
-            <Grid item xs={1} md={1}>
-              <Typography display={{ xs: "none", sm: "flex" }}>COST</Typography>
-              <Typography display={{ xs: "flex", sm: "none" }}>$</Typography>
-            </Grid>
-            <Grid item xs={2} md={2}>
-              <Typography display={{ xs: "none", sm: "flex" }}>
-                Category
-              </Typography>
-              <Typography display={{ xs: "flex", sm: "none" }}>
-                Categ.
-              </Typography>{" "}
-            </Grid>
-            <Grid item xs={3} md={3}>
-              <Typography display={{ xs: "none", sm: "flex" }}>
-                Description
-              </Typography>
-              <Typography display={{ xs: "flex", sm: "none" }}>
-                Desc.
-              </Typography>{" "}
-            </Grid>
-            <Grid item xs={2} md={2}>
-              Action
-            </Grid>
-          </Grid>
 
-          {products.map((x) => (
-            <>
-              <ProductList data={x} />
-              <Divider />
-            </>
-          ))}
-        </Grid>
+            {products.map((x) => (
+              <>
+                <ProductList data={x} />
+                <Divider />
+              </>
+            ))}
+          </Grid>
+        ) : "You currently don't have any listings up!"}
       </CustomLayout>
     </AuthLayout>
   );

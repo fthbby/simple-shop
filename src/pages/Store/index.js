@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Divider, Grid, Typography } from "@mui/material";
+import { Box, Divider, Grid, Typography , CircularProgress} from "@mui/material";
 import Product from "./components/Product";
 import CustomLayout from "../../layouts/CustomLayout";
 import * as productAPI from "../../api/routes/product";
@@ -53,7 +53,7 @@ function Store({}) {
       </Box>
 
       {isLoading ? (
-        "LOADING"
+        <CircularProgress/>
       ) : (
         <Grid
           container
