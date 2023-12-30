@@ -26,6 +26,7 @@ function Login() {
       if (res.data.success) {
         setUser(res.data.data);
         navigate("/");
+        window.location.reload()
       }
     } catch (err) {}
   };

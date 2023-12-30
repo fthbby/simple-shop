@@ -1,15 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Badge, Button, Box, Grid } from "@mui/material/";
+import {
+  Badge,
+  Button,
+  Box,
+  Grid,
+  MenuItem,
+  Divider,
+  ListItemIcon,
+  Menu,
+  IconButton,
+} from "@mui/material/";
 import { NavLink, useNavigate } from "react-router-dom";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useRecoilState } from "recoil";
 import { cartAtom } from "../../stateManagement/atom/cartAtom";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Logout } from "@mui/icons-material";
+import { userAtom } from "../../stateManagement/atom/userAtom";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
 function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
   const navigate = useNavigate();
   const [cart, setCart] = useRecoilState(cartAtom);
   const [totalQuantity, setTotalQuantity] = useState("");
+  const [user, setUser] = useRecoilState(userAtom);
 
   const total = () => {
     let totalAmount = 0;
@@ -25,15 +39,53 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
     total();
   }, [cart]);
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const onLogout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
+  const onLogin = () => {
+    navigate("/login");
+  };
+
+  const onProfile = () => {
+    navigate(`/profile/${user._id}`);
+  };
+
   return (
     <Box
       sx={{
         display: "flex",
         justifyContent: { xs: "space-between", md: "space-between" },
-        // transition: "opacity 1.8s ease-in-out",
-        // opacity: fadeIn ? 1 : 0,
       }}
     >
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        onClick={handleClose}
+        transformOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+      >
+        <MenuItem onClick={onProfile}>My Profile</MenuItem>
+        <Divider />
+        <MenuItem onClick={onLogout}>
+          <ListItemIcon>
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          Logout
+        </MenuItem>
+      </Menu>
+
       <Box
         onClick={() => navigate("/")}
         sx={{
@@ -121,6 +173,20 @@ function NavItems({ mobileOpen, navItems, handleDrawerToggle, fadeIn }) {
         >
           CART {cart.length > 0 ? `(${totalQuantity})` : ""}
         </Button>
+
+        {localStorage.getItem("user") ? (
+          <IconButton onClick={handleClick}>
+            <PersonOutlineOutlinedIcon
+              sx={{ width: 25, height: 25, color: "#F28F59" }}
+            />
+          </IconButton>
+        ) : (
+          <IconButton onClick={onLogin}>
+            <PersonOutlineOutlinedIcon
+              sx={{ width: 25, height: 25, color: "#F28F59" }}
+            />
+          </IconButton>
+        )}
       </Box>
     </Box>
   );
