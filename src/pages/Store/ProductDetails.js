@@ -15,13 +15,13 @@ function ProductDetails({}) {
     setFadeIn(true);
   }, []);
 
-
-  const onSeller = ()=>{
-    console.log('seller :', data.user._id)
-  }
+  const onSeller = () => {
+    navigate(`/profile/${data?.user._id}`);
+  };
 
   const onNext = () => {
-    navigate(`/product/${Number(id) + 1}`);
+    // navigate(`/product/${Number(id) + 1}`);
+    console.log('next placeholder')
   };
 
   const getProduct = async () => {
@@ -121,7 +121,7 @@ function ProductDetails({}) {
             <Grid
               item
               md={6}
-              order={{ xs: 2,sm:1, md: 1 }}
+              order={{ xs: 2, sm: 1, md: 1 }}
               pr={{ xs: 0, md: 5 }}
               sx={{
                 display: "flex",
@@ -132,7 +132,12 @@ function ProductDetails({}) {
               <Typography variant="h5" pb={3}>
                 {data.title}
               </Typography>
-              <Typography variant='h7' gutterBottom onClick={onSeller} sx={{cursor:'pointer', color:'blue'}}>
+              <Typography
+                variant="h7"
+                gutterBottom
+                onClick={onSeller}
+                sx={{ cursor: "pointer", color: "blue" }}
+              >
                 seller: {data?.user?.firstName}
               </Typography>
               <Typography pb={3} fontFamily={"Sometype Mono"}>
@@ -151,7 +156,7 @@ function ProductDetails({}) {
               xs={12}
               sm={6}
               md={5}
-              order={{ xs: 1}}
+              order={{ xs: 1 }}
               sx={{
                 display: "flex",
                 alignItems: "center",
