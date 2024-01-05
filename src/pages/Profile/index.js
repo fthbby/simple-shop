@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Box, Grid, Typography } from "@mui/material";
+import { Avatar, Box, Grid, Typography, Badge } from "@mui/material";
 
 import AuthLayout from "../../layouts/AuthLayout";
 import CustomLayout from "../../layouts/CustomLayout";
@@ -8,13 +8,16 @@ import { useRecoilState } from "recoil";
 import { userAtom } from "../../stateManagement/atom/userAtom";
 import { useParams } from "react-router-dom";
 import * as userAPI from "../../api/routes/user";
-
+import MailIcon from "@mui/icons-material/Mail";
+import { Camera, CameraAltOutlined } from "@mui/icons-material";
+import PhotoModal from "../../components/modals/PhotoModal";
 
 function Profile() {
   const { id } = useParams();
   const [user, setUser] = useRecoilState(userAtom);
   const [profile, setProfile] = useState("");
   const [self, setSelf] = useState(false);
+  const [open, setOpen] = useState(false)
   useEffect(() => {
     if (id == user._id) {
       setSelf(true);
@@ -43,10 +46,38 @@ function Profile() {
 
   return (
     <AuthLayout>
-      <CustomLayout title={self ? 'your profile' : `${profile.firstName}'s profile`}>
+      <PhotoModal open={open} onClose={() => setOpen(false)} />
+      <CustomLayout
+        title={self ? "your profile" : `${profile.firstName}'s profile`}
+      >
         <Grid container maxWidth={800}>
-          <Grid item md={6}>
-            <Avatar sx={{ borderRadius: 2, width: 250, height: 250, mb: 3 }} />
+          <Grid item sm={5.5} md={6}>
+            <Badge
+            
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              badgeContent={
+                <Box
+                  backgroundColor="black"
+                  padding={1.5}
+                  borderRadius={10}
+                  sx={{ cursor: "pointer", mb: 14, mr: 8 }}
+                  onClick={()=>setOpen(true)}
+                >
+                  <CameraAltOutlined
+                    color="action"
+                    sx={{ color: "white", fontSize: 26 }}
+                  />
+                </Box>
+              }
+            >
+              <Avatar
+                sx={{ borderRadius: 2, width: 250, height: 250, mb: 3 }}
+              />
+              {/* <MailIcon color="action" /> */}
+            </Badge>
             <Box>
               <Typography>First Name: {profile?.firstName}</Typography>
               <Typography>Last Name: {profile?.lastName}</Typography>
@@ -56,6 +87,7 @@ function Profile() {
 
           <Grid
             item
+            sm={5.5}
             md={6}
             // border={"2px solid grey"}
             borderRadius={1}
