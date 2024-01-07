@@ -8,7 +8,6 @@ import { useRecoilState } from "recoil";
 import { userAtom } from "../../stateManagement/atom/userAtom";
 import { useParams } from "react-router-dom";
 import * as userAPI from "../../api/routes/user";
-import MailIcon from "@mui/icons-material/Mail";
 import { Camera, CameraAltOutlined } from "@mui/icons-material";
 import PhotoModal from "../../components/modals/PhotoModal";
 
@@ -75,6 +74,7 @@ function Profile() {
             >
               <Avatar
                 sx={{ borderRadius: 2, width: 250, height: 250, mb: 3 }}
+                src={user?.image ? user?.image : ''}
               />
               {/* <MailIcon color="action" /> */}
             </Badge>

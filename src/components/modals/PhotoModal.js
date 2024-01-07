@@ -3,8 +3,9 @@ import { Box, Button, Typography, Modal, Avatar } from "@mui/material";
 import MaroonButton from "../buttons/MaroonButton";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../../stateManagement/atom/userAtom";
-// import { removeAvatar } from "../../../api/routes";
+import * as userAPI from "../../api/routes/user";
 import axios from "axios";
+import { removeAvatar } from "../../api/routes/user";
 
 function PhotoModal({ open, onClose }) {
   const [user, setUser] = useRecoilState(userAtom);
@@ -14,7 +15,7 @@ function PhotoModal({ open, onClose }) {
     setImage(null);
     onClose();
   };
-  
+
   const convertToBase64 = (e) => {
     let reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
@@ -28,7 +29,7 @@ function PhotoModal({ open, onClose }) {
   };
 
   const uploadImage = (e) => {
-    fetch(`${process.env.REACT_APP_BACKEND_URL}/api/user/image`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/image`, {
       method: "POST",
       crossDomain: true,
       headers: {
@@ -49,7 +50,7 @@ function PhotoModal({ open, onClose }) {
         setUser({
           ...user,
           image: data.image,
-          isAvatarImageSet: data.isAvatarImageSet,
+          isAvatarSet: data.isAvatarSet,
         });
 
         if (data.success) {
@@ -58,24 +59,27 @@ function PhotoModal({ open, onClose }) {
       });
   };
 
-//   const deleteAvatar = async () => {
-//     try {
-//       let res = await axios.put(removeAvatar, {
-//         id: user._id,
-//       });
-
-//       if (res.data.success) {
-//         setUser({
-//           ...user,
-//           image: res.data.image,
-//           isAvatarImageSet: res.data.isAvatarImageSet,
-//         });
-//         closeModal();
-//       }
-//     } catch (err) {
-//       console.log("err :", err);
-//     }
-//   };
+  const deleteAvatar = async () => {
+    try {
+        // let res = await axios.put(removeAvatar, {
+        //   id: user._id,
+        // });
+      let data = user._id ;
+      let res = await userAPI.removeAvatar(data);
+      console.log('data :', data)
+      console.log('response :', res.data)
+      if (res.data.success) {
+        setUser({
+          ...user,
+          image: res?.data?.image,
+          isAvatarSet: res?.data?.isAvatarSet,
+        });
+        closeModal();
+      }
+    } catch (err) {
+      console.log("err :", err);
+    }
+  };
 
   return (
     <Modal open={open} onClose={closeModal}>
@@ -111,9 +115,9 @@ function PhotoModal({ open, onClose }) {
               />
             </Typography>
 
-            {/* <Typography onClick={deleteAvatar} sx={{ cursor: "pointer" }}>
+            <Typography onClick={deleteAvatar} sx={{ cursor: "pointer" }}>
               Remove Picture
-            </Typography> */}
+            </Typography>
           </Box>
           {user && user?.image ? (
             <Avatar sx={{ width: 100, height: 100 }} src={user.image} />

@@ -15,3 +15,13 @@ export const getAll = async () => {
   const res =  get(`${BASE}/`);
   return res;
 };
+
+export const postAvatar = async()=>{
+  const res = post(`${BASE}/image`)
+  return res
+}
+
+export const removeAvatar = async()=>{
+  const res = put(`${BASE}/image`)
+  return res
+}
