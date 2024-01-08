@@ -61,13 +61,15 @@ function PhotoModal({ open, onClose }) {
 
   const deleteAvatar = async () => {
     try {
-        // let res = await axios.put(removeAvatar, {
-        //   id: user._id,
-        // });
-      let data = user._id ;
-      let res = await userAPI.removeAvatar(data);
-      console.log('data :', data)
-      console.log('response :', res.data)
+      let data ={id: user._id};
+      let res = await userAPI.removeAvatar({
+        data: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    //   console.log("data :", data);
+      console.log("response :", res.data);
       if (res.data.success) {
         setUser({
           ...user,
@@ -114,10 +116,10 @@ function PhotoModal({ open, onClose }) {
                 hidden
               />
             </Typography>
-
+{/* 
             <Typography onClick={deleteAvatar} sx={{ cursor: "pointer" }}>
               Remove Picture
-            </Typography>
+            </Typography> */}
           </Box>
           {user && user?.image ? (
             <Avatar sx={{ width: 100, height: 100 }} src={user.image} />
