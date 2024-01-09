@@ -12,12 +12,26 @@ import CustomInput from "../input/CustomInput";
 import MaroonButton from "../buttons/MaroonButton";
 import WhiteButton from "../buttons/WhiteButton";
 import * as productAPI from "../../api/routes/product";
+import ImageIcon from "@mui/icons-material/Image";
 
 function ProductModal({ open, onClose, data }) {
   const [title, setTitle] = useState(data.title || "");
   const [price, setPrice] = useState(data.price || "");
   const [category, setCategory] = useState(data.category || "");
   const [description, setDescription] = useState(data.description || "");
+  const [image, setImage] = useState();
+
+  const convertToBase64 = (e) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      console.log(reader.result); //base64 encoded string
+      setImage(reader.result);
+    };
+    reader.onerror = (error) => {
+      console.log("error :", error);
+    };
+  };
 
   const updateProduct = async () => {
     try {
@@ -27,10 +41,10 @@ function ProductModal({ open, onClose, data }) {
         price,
         category,
         description,
+        image,
       };
       let res = await productAPI.update(datas);
-      console.log("datas:", datas);
-      console.log("data :", res.data);
+
       if (res?.data?.success) {
         onClose();
         window.location.reload();
@@ -96,6 +110,51 @@ function ProductModal({ open, onClose, data }) {
             />
           </Grid>
 
+          <Grid item xs={5.75} pb={2}>
+            <Typography fontSize={12} fontWeight={600}>
+              Image
+            </Typography>
+
+            <Typography sx={{ cursor: "pointer" }} component="label">
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                sx={{
+                  height: 100,
+                  width: 100,
+                  border: "2px dotted grey",
+                  borderRadius: 2,
+                  background: "lightgrey",
+                  cursor: "pointer",
+                }}
+              >
+                {data?.image ? (
+                  <Box
+                    component="img"
+                    sx={{ width: 100, height: 100 }}
+                    src={data?.image}
+                  />
+                ) : image != null ? (
+                  <Box
+                    component="img"
+                    sx={{ width: 100, height: 100 }}
+                    src={image}
+                  />
+                ) : (
+                  <ImageIcon sx={{ width: 40, height: 40 }} />
+                )}
+
+                <input
+                  type="file"
+                  accept="image/"
+                  onChange={convertToBase64}
+                  hidden
+                />
+              </Box>
+            </Typography>
+          </Grid>
+
           <Grid item xs={12} md={12} pb={2} width={"100%"}>
             <CustomInput
               title={"Description"}
@@ -112,7 +171,6 @@ function ProductModal({ open, onClose, data }) {
             justifyContent={"space-between"}
             width={"100%"}
           >
-          
             <WhiteButton title="Save As Draft" />
             <MaroonButton title="Update" onClick={updateProduct} />
           </Box>

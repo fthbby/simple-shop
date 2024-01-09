@@ -19,7 +19,7 @@ function ProductList({ data }) {
       alignItems="center"
     >
       <Grid item xs={1} sm={1} md={1}>
-        <Avatar sx={{ borderRadius: 1 }} />
+        <Avatar sx={{ borderRadius: 1 }} src={data?.image ? data.image : ''}/>
       </Grid>
       <Grid item xs={3} md={3}>
         <Box>{data.title}</Box>
