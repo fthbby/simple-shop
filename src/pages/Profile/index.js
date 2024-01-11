@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Box, Grid, Typography, Badge, Divider } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Grid,
+  Typography,
+  Badge,
+  Divider,
+  Input,
+} from "@mui/material";
 import AuthLayout from "../../layouts/AuthLayout";
 import CustomLayout from "../../layouts/CustomLayout";
 
@@ -10,6 +18,7 @@ import * as userAPI from "../../api/routes/user";
 import { Camera, CameraAltOutlined } from "@mui/icons-material";
 import PhotoModal from "../../components/modals/PhotoModal";
 import EditIcon from "@mui/icons-material/Edit";
+import EditProfileModal from "../../components/modals/EditProfileModal";
 
 function Profile() {
   const { id } = useParams();
@@ -17,7 +26,8 @@ function Profile() {
   const [profile, setProfile] = useState("");
   const [self, setSelf] = useState(false);
   const [open, setOpen] = useState(false);
-  
+  const [edit, setEdit] = useState(false);
+
   useEffect(() => {
     if (id === user._id) {
       setSelf(true);
@@ -34,13 +44,16 @@ function Profile() {
     } catch (err) {}
   };
 
-
   useEffect(() => {
     getUser();
   }, [id]);
 
+  const onEdit = () => {
+    setEdit(!edit);
+  };
   return (
     <AuthLayout>
+      <EditProfileModal open={edit} onClose={() => setEdit(false)} />
       <PhotoModal open={open} onClose={() => setOpen(false)} />
       <CustomLayout
         title={self ? "your profile" : `${profile.firstName}'s profile`}
@@ -74,35 +87,33 @@ function Profile() {
               {/* <MailIcon color="action" /> */}
             </Badge>
             <Divider sx={{ marginY: 3 }} />
-            <Box border={"1px solid red"} borderRadius={1} padding={2}>
-              <Typography>First Name: {profile?.firstName}</Typography>
-              <Typography>Last Name: {profile?.lastName}</Typography>
-              <Typography>Last Name: {profile?.email}</Typography>
 
-              <Box display="flex" justifyContent={"flex-end"}>
-                <Box
-                  backgroundColor="black"
-                  borderRadius={10}
-                  width={40}
-                  height={40}
-                  display="flex"
-                  alignItems={"center"}
-                  justifyContent={"center"}
-                  sx={{ cursor: "pointer" }}
-                >
-                  <EditIcon sx={{ color: "white" }} />
+            <Typography fontWeight={600}>USER INFO</Typography>
+            <Box border={"2px solid #C97878"} borderRadius={1} padding={2}>
+              <Typography pb={1}>First Name: {profile?.firstName}</Typography>
+              <Typography pb={1}>Last Name: {profile?.lastName}</Typography>
+              <Typography pb={1}>Email: {profile?.email}</Typography>
+
+              {self && (
+                <Box display="flex" justifyContent={"flex-end"}>
+                  <Box
+                    backgroundColor="black"
+                    borderRadius={10}
+                    width={40}
+                    height={40}
+                    display="flex"
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                    sx={{ cursor: "pointer" }}
+                  >
+                    <EditIcon sx={{ color: "white" }} onClick={onEdit} />
+                  </Box>
                 </Box>
-              </Box>
+              )}
             </Box>
           </Grid>
 
-          <Grid
-            item
-            sm={5.5}
-            md={6}
-            borderRadius={1}
-    
-          >
+          <Grid item sm={5.5} md={6} borderRadius={1}>
             <Typography textTransform={"uppercase"} fontWeight={600}>
               recent activity
             </Typography>
