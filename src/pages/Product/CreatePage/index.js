@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Divider, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  Divider,
+  Grid,
+  Typography,
+} from "@mui/material";
 import CustomLayout from "../../../layouts/CustomLayout";
 import CreateProductModal from "../../../components/modals/CreateProductModal";
 import MaroonButton from "../../../components/buttons/MaroonButton";
@@ -13,6 +19,7 @@ function CreateProduct() {
   const [open, setOpen] = useState(false);
   const [products, setProducts] = useState([]);
   const [user, setUser] = useRecoilState(userAtom);
+  const [loading, setLoading] = useState(false);
 
   const getAllProducts = async () => {
     try {
@@ -26,14 +33,19 @@ function CreateProduct() {
 
   const getAllProductsByUser = async () => {
     try {
+      setLoading(true);
       let res = await productAPI.getAllByUser(user._id);
-      setProducts(res.data.data);
-
-      console.log("res :", res.data);
-    } catch (err) {}
+      if (res.data.success) {
+        setProducts(res.data.data);
+        setLoading(false);
+      }
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+    }
   };
   useEffect(() => {
-    getAllProducts();
+    // getAllProducts();
     getAllProductsByUser();
   }, []);
 
@@ -52,8 +64,9 @@ function CreateProduct() {
         <Box mb={5}>
           <CreateProductModal open={open} onClose={() => setOpen(false)} />
         </Box>
-
-        {products.length > 0 ? (
+        {loading ? (
+          <CircularProgress />
+        ) : products.length > 0 ? (
           <Grid
             container
             border={"1px solid black"}
@@ -112,7 +125,9 @@ function CreateProduct() {
               </>
             ))}
           </Grid>
-        ) : "You currently don't have any listings up!"}
+        ) : (
+          "You currently don't have any listings up!"
+        )}
       </CustomLayout>
     </AuthLayout>
   );

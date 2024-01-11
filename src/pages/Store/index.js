@@ -72,7 +72,7 @@ function Store({}) {
               item
               xs={6}
               md={3.75}
-              lg={3.75}
+              lg={2.75}
               display="flex"
               pb={10}
               justifyContent={"center"}
