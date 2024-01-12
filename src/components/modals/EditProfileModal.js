@@ -14,6 +14,7 @@ import WhiteButton from "../buttons/WhiteButton";
 import * as productAPI from "../../api/routes/product";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../../stateManagement/atom/userAtom";
+import * as userAPI from "../../api/routes/user";
 
 function EditProfileModal({ open, onClose }) {
   const [user, setUser] = useRecoilState(userAtom);
@@ -22,7 +23,9 @@ function EditProfileModal({ open, onClose }) {
   const [email, setEmail] = useState(user?.email || "");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState();
-
+  const [profile, setProfile] = useState(user);
+  
+  
   const allClose = () => {
     setImage(null);
     onClose();
@@ -30,21 +33,31 @@ function EditProfileModal({ open, onClose }) {
 
   const onSave = async () => {
     try {
+      let id = user._id;
       let data = {
-        userId: user._id,
-
-        description,
-        image,
+        // id,
+        firstName,
+        lastName,
+        email,
       };
-    //   let res = await userApi.update(data);
-    //   if (res?.data?.success) {
-    //     onClose();
-    //     window.location.reload();
-    //   }
+      console.log("data :", data);
+
+      let res = await userAPI.updateUser(id, data);
+      console.log("res :", res.data);
+      if (res?.data?.success) {
+        setUser({
+          ...user,
+          ...data,
+        });
+        onClose();
+        window.location.reload();
+      }
     } catch (err) {
       console.log("err :", err);
     }
   };
+
+  console.log('user ', user)
 
   return (
     <Modal open={open} onClose={allClose}>

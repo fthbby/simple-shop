@@ -25,3 +25,8 @@ export const removeAvatar = async()=>{
   const res = put(`${BASE}/image`)
   return res
 }
+
+export const updateUser = async(id, data)=>{
+  const res = put(`${BASE}/${id}`, data)
+  return res
+}
